@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ['docusign-esign'],
+  // Remove the experimental wrapper and directly use serverExternalPackages
 };
 
 export default nextConfig;
