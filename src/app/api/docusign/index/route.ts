@@ -1,18 +1,30 @@
 import path from 'path';
 import fs from 'fs';
 import docusign from 'docusign-esign';
+import { Tabs } from 'docusign-esign';
+
 import { NextResponse } from 'next/server';
 
-// Helper function to check and refresh token
-async function checkToken(session: any) {
-  if (session.access_token && Date.now() < session.expires_at) {
-    console.log("re-using access_token ", session.access_token);
-    return session.access_token;
-  } else {
-    console.log("generating a new access token");
-    let dsApiClient = new docusign.ApiClient();
-    dsApiClient.setBasePath(process.env.BASE_PATH!);
+// Define an interface for token session to improve type safety
+interface TokenSession {
+  access_token?: string;
+  expires_at?: number;
+}
 
+// Helper function to check and refresh token
+async function checkToken(session: TokenSession = {}): Promise<string> {
+  // Check if existing token is valid
+  if (session.access_token && session.expires_at && Date.now() < session.expires_at) {
+    console.log("Re-using existing access token");
+    return session.access_token;
+  }
+
+  // Generate new token if no valid token exists
+  console.log("Generating a new access token");
+  const dsApiClient = new docusign.ApiClient();
+  dsApiClient.setBasePath(process.env.BASE_PATH!);
+
+  try {
     const results = await dsApiClient.requestJWTUserToken(
       process.env.INTEGRATION_KEY!,
       process.env.USER_ID!,
@@ -21,42 +33,39 @@ async function checkToken(session: any) {
       3600
     );
 
-    return {
-      access_token: results.body.access_token,
-      expires_at: Date.now() + (results.body.expires_in - 60) * 1000
-    };
+    return results.body.access_token;
+  } catch (error) {
+    console.error('Token generation failed:', error);
+    throw new Error('Failed to generate access token');
   }
 }
 
 // Helper function to create envelopes API
-function getEnvelopesApi(accessToken: string) {
-  let dsApiClient = new docusign.ApiClient();
+function getEnvelopesApi(accessToken: string): docusign.EnvelopesApi {
+  const dsApiClient = new docusign.ApiClient();
   dsApiClient.setBasePath(process.env.BASE_PATH!);
-  dsApiClient.addDefaultHeader('Authorization', 'Bearer ' + accessToken);
+  dsApiClient.addDefaultHeader('Authorization', `Bearer ${accessToken}`);
   return new docusign.EnvelopesApi(dsApiClient);
 }
 
 // Helper function to make envelope
-function makeEnvelope(name: string, email: string, company: string) {
-  let env = new docusign.EnvelopeDefinition();
+function makeEnvelope(name: string, email: string, company: string): docusign.EnvelopeDefinition {
+  const env = new docusign.EnvelopeDefinition();
   env.templateId = process.env.TEMPLATE_ID!;
 
-  let text = docusign.Text.constructFromObject({
-    tabLabel: "company_name", 
-    value: company
-  });
+  const text = new docusign.Text();
+  text.tabLabel = "company_name";
+  text.value = company;
 
-  let tabs = docusign.Tabs.constructFromObject({
-    textTabs: [text],
-  });
+  const tabs = new docusign.Tabs();
+  tabs.textTabs = [text];
 
-  let signer1 = docusign.TemplateRole.constructFromObject({
-    email: email,
-    name: name,
-    tabs: tabs,
-    clientUserId: process.env.CLIENT_USER_ID!,
-    roleName: 'Applicant'
-  });
+  const signer1 = new docusign.TemplateRole();
+  signer1.email = email;
+  signer1.name = name;
+  signer1.tabs = tabs;
+  signer1.clientUserId = process.env.CLIENT_USER_ID!;
+  signer1.roleName = 'Applicant';
 
   env.templateRoles = [signer1];
   env.status = "sent";
@@ -64,8 +73,8 @@ function makeEnvelope(name: string, email: string, company: string) {
 }
 
 // Helper function to make recipient view request
-function makeRecipientViewRequest(name: string, email: string) {
-  let viewRequest = new docusign.RecipientViewRequest();
+function makeRecipientViewRequest(name: string, email: string): docusign.RecipientViewRequest {
+  const viewRequest = new docusign.RecipientViewRequest();
   viewRequest.returnUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/success`;
   viewRequest.authenticationMethod = 'none';
   viewRequest.email = email;
@@ -79,32 +88,34 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { name, email, company } = body;
 
-    // Get or refresh access token
-    const tokenInfo = await checkToken({}); // Replace {} with actual session object
-    const accessToken = typeof tokenInfo === 'string' 
-      ? tokenInfo 
-      : tokenInfo.access_token;
+    // Validate input
+    if (!name || !email || !company) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    // Get access token
+    const accessToken = await checkToken();
 
     // Create envelopes API
-    let envelopesApi = getEnvelopesApi(accessToken);
+    const envelopesApi = getEnvelopesApi(accessToken);
 
     // Create envelope
-    let envelope = makeEnvelope(name, email, company);
-    let results = await envelopesApi.createEnvelope(
+    const envelope = makeEnvelope(name, email, company);
+    const envelopeResult = await envelopesApi.createEnvelope(
       process.env.ACCOUNT_ID!, 
       { envelopeDefinition: envelope }
     );
 
     // Create recipient view
-    let viewRequest = makeRecipientViewRequest(name, email);
-    results = await envelopesApi.createRecipientView(
+    const viewRequest = makeRecipientViewRequest(name, email);
+    const viewResult = await envelopesApi.createRecipientView(
       process.env.ACCOUNT_ID!, 
-      results.envelopeId,
+      envelopeResult.envelopeId!,
       { recipientViewRequest: viewRequest }
     );
 
-    return NextResponse.json({ redirectUrl: results.url });
-  } catch (error: any) {
+    return NextResponse.json({ redirectUrl: viewResult.url });
+  } catch (error) {
     console.error('DocuSign API Error:', error);
     return NextResponse.json({ error: 'Failed to create DocuSign envelope' }, { status: 500 });
   }
