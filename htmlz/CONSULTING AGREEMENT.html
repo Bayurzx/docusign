@@ -56,15 +56,16 @@
   <div class="section">
     <p>
       This Consulting Agreement (the <strong>"Agreement"</strong>) is entered into by and between the parties below
-      on <u>{{person_1.current_date}}</u>.
+      on <u>{{contract.current_date}}</u>.
     </p>
     <p>
-      <strong>ACME Consulting Company</strong>, a registered company located at <u>{{person_1.address.street}}, {{person_1.address.city}}, {{person_1.address.state}}, {{person_1.address.zip}}</u>,
+      <strong>{{consultant.company_name}}</strong>, a registered company located at 
+      <u>{{consultant.address.street}}, {{consultant.address.city}}, {{consultant.address.state}}, {{consultant.address.zip}}</u>,
       (hereby referred to as the <strong>"Consultant"</strong>), and:
     </p>
-    <p>
-      <u>{{person_1.full_name.first_name}} {{person_1.full_name.last_name}}</u>, whose address is at 
-      <u>{{person_1.address.street}}, {{person_1.address.city}}, {{person_1.address.state}}, {{person_1.address.zip}}</u>
+        <p>
+      <u>{{client.full_name.first_name}} {{client.full_name.last_name}}</u>, whose address is at 
+      <u>{{client.address.street}}, {{client.address.city}}, {{client.address.state}}, {{client.address.zip}}</u>
       (hereby referred to as the <strong>"Client"</strong>).
     </p>
   </div>
@@ -75,13 +76,13 @@
     </p>
     <ul style="list-style-type: disc; width: 100%; padding-left: 20px; margin: 0;">
       <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-        {{person_1.services[0]}}
+        {{consultant.services[0]}}
       </li>
       <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-        {{person_1.services[1]}}
+        {{consultant.services[1]}}
       </li>
       <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-        {{person_1.services[2]}}
+        {{consultant.services[2]}}
       </li>
     </ul>
   </div>
@@ -89,7 +90,7 @@
     <strong>NOW THEREFORE</strong>, for and in consideration of the mutual covenants made by the parties hereto,
     the Parties to this agreement agree to the terms and conditions below:
   </p>
-  </div>
+  
 
 
 
@@ -120,24 +121,24 @@
         individuals or entities.</li>
     </ul>
 
-<p><strong>3. Financial Provisions:</strong></p>
-<ul>
-  <li>
-    The total service fee to be paid under this Agreement is <strong>{{person_1.amount}}</strong>, payable every
-    <strong>{{person_1.time_period}}</strong> of the month.
-  </li>
-  <li>Payments shall be made via <strong>{{person_1.payment_method}}</strong>.</li>
-  <li>
-    If the Client fails to pay within five (5) days after the due date, late charges of <strong>{{person_1.late_fee}}</strong>
-    shall be applied.
-  </li>
-</ul>
-
+    <p><strong>3. Financial Provisions:</strong></p>
+    <ul>
+      <li>
+        The total service fee to be paid under this Agreement is <strong>{{terms.amount}}</strong>, payable every
+        <strong>{{terms.time_period}}</strong> of the month.
+      </li>
+      <li>Payments shall be made via <strong>{{terms.payment_method}}</strong>.</li>
+      <li>
+        If the Client fails to pay within five (5) days after the due date, late charges of <strong>{{terms.late_fee}}</strong>
+        shall be applied.
+      </li>
+    </ul>
+    
     <p><strong>4. Term:</strong></p>
     <ul>
       <li>
-        This Agreement becomes effective on <strong>{{person_1.start_date}}</strong> and remains in force for
-        <strong>{{person_1.duration}}</strong>.
+        This Agreement becomes effective on <strong>{{contract.start_date}}</strong> and remains in force for
+        <strong>{{terms.duration}}</strong>.
       </li>
       <li>
         At the end of this period, the parties may decide to:
@@ -147,7 +148,7 @@
         </ul>
       </li>
     </ul>
-    
+        
     <p><strong>5. Termination:</strong></p>
     <ul>
       <li>The contract will expire automatically after 30 days unless otherwise agreed by the parties.</li>
@@ -199,13 +200,13 @@
     <p>
       <strong>8. Prohibition on Competition:</strong> The Consultant acknowledges that the information provided by the
       Client represents unique and valuable assets. As such, the Consultant agrees that for a period of
-      <strong>{{person_1.duration}}</strong> years following the termination of this Agreement—whether voluntary or
+      <strong>{{terms.duration}}</strong> years following the termination of this Agreement—whether voluntary or
       involuntary—they shall not engage directly or indirectly in any business competitive with the Client's. This
-      restriction applies to the geographical area of <strong>{{person_1.geographical_area}}</strong>. Competitive activities
+      restriction applies to the geographical area of <strong>{{consultant.geographical_area}}</strong>. Competitive activities
       include, but are not limited to, acting as an owner, partner, or agent in such businesses, becoming an employee of a
       competitor, or soliciting the Client’s customers for the benefit of a third party. In the event of a breach of this
       non-competition clause, the Client will issue a written notice requesting immediate compliance. If the Consultant
-      fails to comply within thirty (30) days, they shall pay a penalty of USD 10,000 (ten thousand US dollars). This
+      fails to comply within thirty (30) days, they shall pay a penalty of {{terms.penalty}}. This
       penalty does not absolve the Consultant from their obligation to adhere to this clause.
     </p>
     <p>
@@ -215,15 +216,15 @@
       <em>Severability:</em> If any provision of this Agreement is deemed invalid or unenforceable, the remaining
       provisions shall remain valid and enforceable.
       <em>Governing Law and Dispute Resolution:</em> This Agreement is governed by and construed in accordance with the
-      laws of <strong>{{person_1.jurisdiction}}</strong>. Any disputes related to this Agreement, including questions of
-      validity or termination, shall be resolved by the courts and execution offices of <strong>{{person_1.jurisdiction}}</strong>.
+      laws of <strong>{{terms.jurisdiction}}</strong>. Any disputes related to this Agreement, including questions of
+      validity or termination, shall be resolved by the courts and execution offices of <strong>{{terms.jurisdiction}}</strong>.
       <em>Notifications:</em> All notifications under this Agreement must be in writing and delivered to the addresses
       specified herein. If a party’s address changes and the other party is not informed, notifications sent to the
       previously indicated address will be deemed legally valid.
       <em>Entire Agreement:</em> This Agreement represents the entire understanding between the Parties, superseding any
       prior written or oral agreements related to its subject matter.
     </p>
-    
+        
   </div>
 
 
@@ -238,22 +239,22 @@
     <div class="signature-block">
       <p><strong>Consultant</strong></p>
       <br/>
-      <p>Name: <span class="spacer"></span></p>
+      <p>Name: {{consultant.full_name.first_name}} {{consultant.full_name.last_name}}</p>
       <br/>
-      <p>Date: <span class="spacer"></span></p>
-      <br> 
-      <p>Signature: <span class="spacer"></span></p>
+      <p>Date: {{contract.current_date}}</p>
+      <br/> 
+      <p>Signature: __________________________</p>
     </div>
     <div class="signature-block">
       <p><strong>Client</strong></p>
       <br/>
-      <p>Name: <span class="spacer"></span></p>
+      <p>Name: {{client.full_name.first_name}} {{client.full_name.last_name}}</p>
       <br/>
-      <p>Date: <span class="spacer"></span></p>
-      <br> 
-      <p>Signature: <span class="spacer"></span></p>
+      <p>Date: {{contract.current_date}}</p>
+      <br/> 
+      <p>Signature: __________________________</p>
     </div>
-  </div>
+  </div>  
   <div class="footer">
     <p>End of Agreement</p>
   </div>
@@ -264,8 +265,30 @@
 <script>
 
 let inputs = {
+  // Common Contract Information
+  contract: {
+    name: "Consulting Agreement",
+    current_date: new Date().toLocaleDateString(),
+    date: "2021-01-01",
+    start_date: "2021-01-01"
+  },
+
+  // Legal and Financial Terms
+  // Can be negotiated between parties
+  // You probably should notify all parties if you change these values
+  terms: {
+    jurisdiction: "New York", 
+    duration: "2 years",      
+    payment_method: "Bank Transfer",  // Can be specified per agreement
+    amount: "$20,000",       
+    late_fee: "$2,000",       
+    penalty: "$USD 10,000 (ten thousand US dollars)",       
+    time_period: "quarterly" 
+  },
+
   // Consultant Information
   consultant: {
+    company_name: "ACME Consulting Company",
     full_name: {
       first_name: "Alice",
       last_name: "Smith"
@@ -278,23 +301,13 @@ let inputs = {
     },
     state: "NY",
     country: "USA",
-    current_date: new Date().toLocaleDateString(),
-    date: "2021-01-01",
-    contract_name: "Consulting Agreement",
-    contract_type: "Professional Services Contract",
     signature_code: "987654",
-    jurisdiction: "New York",
-    duration: "2 years",
-    payment_method: "Bank Transfer",
-    amount: "$20,000",
-    time_period: "quarterly",
+    contract_type: "Professional Services Contract",
     services: "Strategic Planning, Market Analysis, and Process Optimization",
-    geographical_area: "New York",
-    start_date: "2021-01-01"
+    geographical_area: "New York"
   },
 
-
-  // Client Information 
+  // Client Information
   client: {
     full_name: {
       first_name: "John",
@@ -308,19 +321,10 @@ let inputs = {
     },
     state: "CA",
     country: "USA",
-    current_date: new Date().toLocaleDateString(),
-    date: "2021-01-01",
-    contract_name: "Consulting Agreement",
-    contract_type: "Confidentiality Agreement",
     signature_code: "123456",
-    jurisdiction: "California",
-    duration: "3 years",
-    payment_method: "Credit Card",
-    amount: "$10,000",
-    time_period: "monthly",
+    contract_type: "Confidentiality Agreement",
     services: "Business Development, Training, and Support",
-    geographical_area: "California",
-    start_date: "2021-01-01"
+    geographical_area: "California"
   }
 };
 
