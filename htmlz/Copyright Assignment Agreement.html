@@ -64,7 +64,7 @@
 
 <body>
     <div class="container">
-        <h1>Assignment of Copyright Agreement</h1>
+        <h1>{{contract.name}}</h1>
 
         <div class="section">
             <h3>I. Contracting Parties</h3>
@@ -75,24 +75,38 @@
 
             <table class="table">
                 <tr>
-                    <th>Assignor</th>
-                    <th>Assignee</th>
+                    <th>{{transferor.name}}</th>
+                    <th>{{transferee.name}}</th>
                 </tr>
                 <tr>
-                    <td>[Assignor Information]</td>
-                    <td>[Assignee Information]</td>
+                    <td>
+                        {{transferor.address.street}}<br>
+                        {{transferor.address.street_line_2}}<br>
+                        {{transferor.address.city}}, {{transferor.address.state}} {{transferor.address.postal}}<br>
+                        {{transferor.address.country}}<br>
+                        Phone: {{transferor.phone}}<br>
+                        Email: {{transferor.email}}
+                    </td>
+                    <td>
+                        {{transferee.address.street}}<br>
+                        {{transferee.address.street_line_2}}<br>
+                        {{transferee.address.city}}, {{transferee.address.state}} {{transferee.address.postal}}<br>
+                        {{transferee.address.country}}<br>
+                        Phone: {{transferee.phone}}<br>
+                        Email: {{transferee.email}}
+                    </td>
                 </tr>
             </table>
         </div>
 
         <div class="section">
             <p>
-                WHEREAS the Assignor has created and currently holds ownership of {{the work}} (hereinafter referred to
+                WHEREAS the Assignor has created and currently holds ownership of {{work.description}} (hereinafter referred to
                 as the <strong>"Work"</strong>) detailed below;
             </p>
             <table class="table">
                 <tr>
-                    <td>[Assignee Information]</td>
+                    <td>{{work.description}}</td>
                 </tr>
             </table>
 
@@ -128,7 +142,7 @@
         <div class="section">
             <h3>III. Duration and Cessation</h3>
             <p>
-                This Agreement shall commence on <strong>[Effective Date]</strong>, and the rights granted herein may
+                This Agreement shall commence on {{contract.current_date}}, and the rights granted herein may
                 only be exercised during the specified term in accordance with this Agreement's provisions.
             </p>
             <p>
@@ -141,8 +155,7 @@
             </p>
             <p>
                 Should either party fail to fulfill a fundamental obligation under this Agreement, the other party may
-                terminate by providing written notification. The party in breach shall have <strong>[Number of
-                    Days]</strong> days following receipt of such notice to remedy the violation. Failure to cure within
+                terminate by providing written notification. The party in breach shall have thirty (30) days following receipt of such notice to remedy the violation. Failure to cure within
                 this timeframe shall result in immediate termination.
             </p>
             <p>
@@ -167,14 +180,12 @@
         <div class="section">
             <h3>V. Financial Compensation</h3>
             <p>
-                As consideration for this copyright transfer, the Assignee shall remit to the Assignor a sum of
-                <strong>[Payment Amount]</strong> within <strong>[Number of Days]</strong> days of this Agreement's
-                effective date.
+                As consideration for this copyright transfer, the Assignee shall remit to the Assignor a sum to be
+                agreed upon within thirty (30) days of this Agreement's effective date.
             </p>
             <p>
-                Furthermore, the Assignor shall receive <strong>[Percentage]</strong>% of revenue generated through
-                sales. All payments specified in this Agreement shall be processed via <strong>[Payment
-                    Method]</strong>.
+                Furthermore, the Assignor shall receive an agreed percentage of revenue generated through
+                sales. All payments specified in this Agreement shall be processed via wire transfer.
             </p>
         </div>
 
@@ -192,34 +203,34 @@
             </p>
             <p>
                 <strong>Governing Law</strong> - This Agreement shall be governed by and construed in accordance with
-                the applicable federal law and the laws of the State of [Governing Law]. Any legal action or proceeding
-                arising out of or relating to this Agreement shall be brought in the courts located in [Jurisdiction].
+                the applicable federal law and the laws of the State of {{contract.governing_law}}. Any legal action or proceeding
+                arising out of or relating to this Agreement shall be brought in the courts located in {{contract.jurisdiction}}.
             </p>
         </div>
 
         <div class="section">
             <p>
                 <strong>IN WITNESS WHEREOF</strong>, the parties have executed this Copyright Assignment Agreement as of
-                [Date].
+                {{contract.execution_date}}.
             </p>
 
             <table class="table">
                 <tr>
-                    <th>Assignor</th>
-                    <th>Assignee</th>
+                    <th>{{transferor.name}}</th>
+                    <th>{{transferee.name}}</th>
                 </tr>
                 <tr>
                     <td>
-                        <p><strong>Name:</strong> _____________________</p>
-                        <p><strong>Date:</strong> _____________________</p>
+                        <p><strong>Name:</strong> {{transferor.signature.name}}</p>
+                        <p><strong>Date:</strong> {{transferor.signature.date}}</p>
                         <p><strong>Signature:</strong></p>
-                        <p>_________________________________</p>
+                        <p>{{transferor.signature.signature}}</p>
                     </td>
                     <td>
-                        <p><strong>Name:</strong> _____________________</p>
-                        <p><strong>Date:</strong> _____________________</p>
+                        <p><strong>Name:</strong> {{transferee.signature.name}}</p>
+                        <p><strong>Date:</strong> {{transferee.signature.date}}</p>
                         <p><strong>Signature:</strong></p>
-                        <p>_________________________________</p>
+                        <p>{{transferee.signature.signature}}</p>
                     </td>
                 </tr>
             </table>
@@ -229,59 +240,6 @@
             <p>Agreement Conclusion</p>
         </div>
     </div>
-
-    </div>
-
-    <script>
-        let inputs = {
-            contract: {
-                name: "Assignment of Copyright Agreement",
-                current_date: new Date().toLocaleDateString(),
-                governing_law: "[State Name]",
-                jurisdiction: "[Court Location]",
-                execution_date: "[Date]"
-            },
-            transferor: {
-                name: "Assignor",
-                address: {
-                    street: "Street Address",
-                    street_line_2: "Street Address Line 2",
-                    city: "City",
-                    state: "State / ...",
-                    postal: "Postal...",
-                    country: "Country"
-                },
-                phone: "Phone Number",
-                email: "example@example...",
-                signature: {
-                    name: "",
-                    date: "",
-                    signature: ""
-                }
-            },
-            transferee: {
-                name: "Assignee",
-                address: {
-                    street: "Street Address",
-                    street_line_2: "Street Address Line 2",
-                    city: "City",
-                    state: "State / ...",
-                    postal: "Postal...",
-                    country: "Country"
-                },
-                phone: "Phone Number",
-                email: "example@example...",
-                signature: {
-                    name: "",
-                    date: "",
-                    signature: ""
-                }
-            },
-            work: {
-                description: "[Description of the Work]"
-            }
-        };
-    </script>
 </body>
 
 </html>
