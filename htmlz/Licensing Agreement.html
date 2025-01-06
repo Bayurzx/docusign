@@ -166,11 +166,11 @@
         {{licensee.state}}, with principal address at {{licensee.streetAddress}}, {{licensee.city}}, {{licensee.state}},
         {{licensee.postalCode}}, {{licensee.country}} (hereinafter known as "Licensee");</p>
 
-    <p><strong>WHEREAS</strong>, the Licensor is the possessor and owner of Copyright of {{copyrightProduct}}
+    <p><strong>WHEREAS</strong>, the Licensor is the possessor and owner of Copyright of {{software.copyrightProduct}}
         (hereinafter known as "Software");</p>
 
     <p><strong>WHEREAS</strong>, the Licensor opens for commercialization a non-exclusive license to use the
-        {{copyrightProduct}};</p>
+        {{software.copyrightProduct}};</p>
 
     <p><strong>WHEREAS</strong>, Licensee commits itself to the terms and conditions for the use of such license granted
         by Licensor;</p>
@@ -196,7 +196,7 @@
         <tr>
             <td><strong>Software</strong></td>
             <td>shall refer to the copyrighted application or program executing specific tasks on a computer under the
-                name {{copyrightProduct}};</td>
+                name {{software.copyrightProduct}};</td>
         </tr>
         <tr>
             <td><strong>Term</strong></td>
@@ -206,8 +206,8 @@
 
     <div class="heading">Consideration</div>
     <p>In consideration of the grant of license to Licensee for the use of the Software, it is agreed upon that Licensee
-        on every transaction utilizing the Software shall apportion the rate of {{rateTransactionInNumbers}}
-        ({{rateTransactionInWords}}).</p>
+        on every transaction utilizing the Software shall apportion the rate of {{agreement.rateTransactionInNumbers}}
+        ({{agreement.rateTransactionInWords}}).</p>
 
     <div class="heading">Ownership and License Grants</div>
     <p>The Parties acknowledge that retention over the ownership, title, and interest over the copyright of the Software
@@ -248,7 +248,7 @@
 
     <div class="heading">Term</div>
     <p>The term of this Agreement shall commence on the date this Agreement is made effective and shall continue for a
-        period of {{termDuration}} ({{termDurationInNumbers}}) {{termType}}.</p>
+        period of {{agreement.termDuration}} ({{agreement.termDurationInNumbers}}) {{agreement.termType}}.</p>
 
     <div class="heading">Termination</div>
     <p>Parties may terminate this agreement with or without cause by submitting a written notice to the other Party, 30
@@ -278,7 +278,7 @@
 
     <div class="heading">Governing Law and Dispute Resolution</div>
     <p>In the event of any dispute, claim, damage, or controversy arising out of this Agreement, the Parties acknowledge
-        that this Agreement is governed exclusively by the laws of the State of {{governingState}}. The dispute shall be
+        that this Agreement is governed exclusively by the laws of the State of {{agreement.governingState}}. The dispute shall be
         resolved within sixty (60) days and shall be submitted for arbitration proceedings, with the arbitrator elected
         by both parties. The cost of the proceedings shall be equally shared by the Parties. However, the prevailing
         party shall be indemnified by the losing party in terms of the disputed award and attorney's fees, paid by the
@@ -291,18 +291,18 @@
             <td>
                 <div class="signature-box"></div>
                 <div class="required">Licensor Representative Signature</div>
-                <input type="text" placeholder="First Name" value="{{licensorFirstName}}" class="required">
-                <input type="text" placeholder="Last Name" value="{{licensorLastName}}" class="required">
-                <input type="text" placeholder="Position/Title" value="{{licensorPosition}}">
-                <input type="text" placeholder="Date" value="{{licensorSignDate}}" class="required">
+                <input type="text" placeholder="First Name" value="{{licensor.signature.firstName}}" class="required">
+                <input type="text" placeholder="Last Name" value="{{licensor.signature.lastName}}" class="required">
+                <input type="text" placeholder="Position/Title" value="{{licensor.signature.position}}">
+                <input type="text" placeholder="Date" value="{{licensor.signature.date}}" class="required">
             </td>
             <td>
                 <div class="signature-box"></div>
                 <div class="required">Licensee Representative Signature</div>
-                <input type="text" placeholder="First Name" value="{{licenseeFirstName}}" class="required">
-                <input type="text" placeholder="Last Name" value="{{licenseeLastName}}" class="required">
-                <input type="text" placeholder="Position/Title" value="{{licenseePosition}}">
-                <input type="text" placeholder="Date" value="{{licenseeSignDate}}" class="required">
+                <input type="text" placeholder="First Name" value="{{licensee.signature.firstName}}" class="required">
+                <input type="text" placeholder="Last Name" value="{{licensee.signature.lastName}}" class="required">
+                <input type="text" placeholder="Position/Title" value="{{licensee.signature.position}}">
+                <input type="text" placeholder="Date" value="{{licensee.signature.date}}" class="required">
             </td>
         </tr>
     </table>
