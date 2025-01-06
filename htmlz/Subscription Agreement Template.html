@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Agreement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        td {
+            padding: 8px;
+            vertical-align: top;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .signature-line {
+            border-top: 1px solid black;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const inputs = {
+            // Agreement Date and Parties
+            date: '',
+
+            // Company Information
+            company: {
+                name: '',
+                streetAddress: '',
+                streetAddressLine2: '',
+                city: '',
+                state: '',
+                postalCode: '',
+                country: '',
+                email: '',
+                phoneNumber: ''
+            },
+
+            // Investor Information
+            investor: {
+                name: '',
+                streetAddress: '',
+                streetAddressLine2: '',
+                city: '',
+                state: '',
+                postalCode: '',
+                country: '',
+                email: '',
+                phoneNumber: ''
+            },
+
+            // Subscription Details
+            subscription: {
+                numberOfShares: '',
+                purchasePrice: '',
+                paymentPeriod: '',
+                deliveryPeriod: ''
+            },
+
+            // Closing Information
+            closing: {
+                date: ''
+            },
+
+            // Legal Information
+            legal: {
+                stateCountry: '',
+                jurisdiction: ''
+            },
+
+            // Signature Details
+            signatures: {
+                company: {
+                    name: '',
+                    date: '',
+                    signature: ''
+                },
+                investor: {
+                    name: '',
+                    date: '',
+                    signature: ''
+                }
+            }
+        };
+    </script>
+
+    <div class="header">
+        <h1>Subscription Agreement</h1>
+    </div>
+
+    <p>This Subscription Agreement (referred to as the "Agreement") is executed on {{date}}, between:</p>
+
+    <table border="1">
+        <tr>
+            <td width="50%">
+                <strong>The "Company"</strong><br>
+                {{company.name}}<br>
+                {{company.streetAddress}}<br>
+                {{company.streetAddressLine2}}<br>
+                {{company.city}}, {{company.state}} {{company.postalCode}}<br>
+                {{company.country}}<br>
+                Email: {{company.email}}<br>
+                Phone: {{company.phoneNumber}}
+            </td>
+            <td width="50%">
+                <strong>The "Investor"</strong><br>
+                {{investor.name}}<br>
+                {{investor.streetAddress}}<br>
+                {{investor.streetAddressLine2}}<br>
+                {{investor.city}}, {{investor.state}} {{investor.postalCode}}<br>
+                {{investor.country}}<br>
+                Email: {{investor.email}}<br>
+                Phone: {{investor.phoneNumber}}
+            </td>
+        </tr>
+    </table>
+
+    <p>The Company and the Investor will be jointly referred to as the "Parties" and individually as a "Party".</p>
+
+    <div class="section">
+        <p><strong>BACKGROUND:</strong></p>
+        <p>The Company seeks to raise capital through a share offering to the Investor;</p>
+        <p>The Investor wishes to participate in this offering under the terms specified herein;</p>
+    </div>
+
+    <div class="section">
+        <h2>Terms and Conditions</h2>
+
+        <h3>1. Share Subscription</h3>
+        <p>The Investor agrees to subscribe for {{subscription.numberOfShares}} shares (the "Subscription Shares") at a
+            total purchase price of {{subscription.purchasePrice}} (the "Subscription Amount").</p>
+        <p>Payment shall be completed within {{subscription.paymentPeriod}} days of execution via wire transfer or other
+            approved payment methods.</p>
+        <p>The Company shall deliver the shares within {{subscription.deliveryPeriod}} days of receiving payment, either
+            electronically or via physical certificates.</p>
+
+        <h3>2. Representations and Warranties</h3>
+        <p>The Company confirms its authority to enter this agreement and verifies the accuracy of provided financial
+            statements.</p>
+        <p>The Investor acknowledges receipt of Company documentation and confirms sufficient experience to evaluate
+            investment risks.</p>
+        <p>The Investor agrees to indemnify the Company against losses arising from breaches of these representations.
+        </p>
+
+        <h3>3. Closing</h3>
+        <p>The closing ("Closing") will occur remotely via electronic document exchange on {{closing.date}}.</p>
+
+        <h3>4. Governing Law</h3>
+        <p>This Agreement shall be governed by the laws of {{legal.stateCountry}} and any disputes shall be resolved in
+            the courts of {{legal.jurisdiction}}.</p>
+
+        <h3>5. Additional Provisions</h3>
+        <ul>
+            <li>This Agreement binds all successors and assigns</li>
+            <li>This document represents the complete understanding between Parties</li>
+            <li>Modifications require written consent from both Parties</li>
+            <li>Invalid provisions shall be modified to maintain enforceability</li>
+            <li>Electronic signatures are considered valid and binding</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <table>
+            <tr>
+                <td width="50%">
+                    <strong>The Company</strong><br><br>
+                    Name: {{signatures.company.name}}<br>
+                    Date: {{signatures.company.date}}<br>
+                    <div class="signature-line">
+                        Signature: {{signatures.company.signature}}
+                    </div>
+                </td>
+                <td width="50%">
+                    <strong>The Investor</strong><br><br>
+                    Name: {{signatures.investor.name}}<br>
+                    Date: {{signatures.investor.date}}<br>
+                    <div class="signature-line">
+                        Signature: {{signatures.investor.signature}}
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
