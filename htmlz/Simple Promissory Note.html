@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promissory Note Agreement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .signature-line {
+            border-top: 1px solid black;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PROMISSORY NOTE AGREEMENT</h1>
+    </div>
+
+    <p>This Promissory Note agreement is executed on {{date}} in the State of {{state}}.</p>
+
+    <table>
+        <tr>
+            <td colspan="2"><strong>BORROWER INFORMATION</strong></td>
+            <td colspan="2"><strong>LENDER INFORMATION</strong></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>Full Name:</td>
+                        <td>{{borrower.firstName}} {{borrower.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td>{{borrower.streetAddress}}<br>
+                            {{borrower.streetAddressLine2}}<br>
+                            {{borrower.city}}, {{borrower.state}} {{borrower.postalCode}}<br>
+                            {{borrower.country}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact:</td>
+                        <td>Tel: {{borrower.phoneNumber}}<br>
+                            Email: {{borrower.email}}</td>
+                    </tr>
+                </table>
+            </td>
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>Full Name:</td>
+                        <td>{{lender.firstName}} {{lender.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address:</td>
+                        <td>{{lender.streetAddress}}<br>
+                            {{lender.streetAddressLine2}}<br>
+                            {{lender.city}}, {{lender.state}} {{lender.postalCode}}<br>
+                            {{lender.country}}</td>
+                    </tr>
+                    <tr>
+                        <td>Contact:</td>
+                        <td>Tel: {{lender.phoneNumber}}<br>
+                            Email: {{lender.email}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p>IN CONSIDERATION OF THE VALUE RECEIVED, the undersigned Borrower hereby commits to pay the Lender the principal amount of ${{principalSum}} ({{principalSumInWriting}} US Dollars), plus interest calculated at {{interestRate}}% per annum on the outstanding principal balance under the following terms:</p>
+
+    <p>The complete balance of this Note, including all accrued interest, shall become due and fully payable on the {{paymentDue.day}} day of {{paymentDue.month}}, {{paymentDue.year}}. Periodic installment payments are not required under this agreement.</p>
+
+    <p>Should the Borrower default on any payment obligation, all unpaid principal will accrue interest at {{interestRateInNumber}}% annually (or 18% if unspecified), or at the maximum legally permissible rate, whichever is lower.</p>
+
+    <h3>Transfer Restrictions:</h3>
+    <p>The Borrower may not transfer or assign any rights or obligations specified in this agreement without obtaining prior written authorization from the Lender.</p>
+
+    <h3>Modifications:</h3>
+    <p>Any modifications or amendments to this Note require mutual written consent from both the Lender and Borrower.</p>
+
+    <h3>Jurisdiction:</h3>
+    <p>This Note shall be interpreted and enforced according to the laws of the State of {{state}}.</p>
+
+    <table style="margin-top: 50px;">
+        <tr>
+            <td style="width: 50%; border: none;">
+                <p><strong>BORROWER:</strong></p>
+                <p>Name: {{borrowerSignature.name.firstName}} {{borrowerSignature.name.lastName}}</p>
+                <p>Date: {{borrowerSignature.date}}</p>
+                <div class="signature-line"></div>
+                <p>Signature</p>
+            </td>
+            <td style="width: 50%; border: none;">
+                <p><strong>LENDER:</strong></p>
+                <p>Name: {{lenderSignature.name.firstName}} {{lenderSignature.name.lastName}}</p>
+                <p>Date: {{lenderSignature.date}}</p>
+                <div class="signature-line"></div>
+                <p>Signature</p>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const inputs = {
+            date: "",
+            state: "",
+            borrower: {
+                firstName: "",
+                lastName: "",
+                streetAddress: "",
+                streetAddressLine2: "",
+                city: "",
+                state: "",
+                postalCode: "",
+                country: "",
+                phoneNumber: "",
+                email: ""
+            },
+            lender: {
+                firstName: "",
+                lastName: "",
+                streetAddress: "",
+                streetAddressLine2: "",
+                city: "",
+                state: "",
+                postalCode: "",
+                country: "",
+                phoneNumber: "",
+                email: ""
+            },
+            principalSum: "",
+            principalSumInWriting: "",
+            interestRate: "",
+            interestRateInNumber: "",
+            paymentDue: {
+                day: "",
+                month: "",
+                year: ""
+            },
+            borrowerSignature: {
+                name: {
+                    firstName: "",
+                    lastName: ""
+                },
+                date: "",
+                signature: ""
+            },
+            lenderSignature: {
+                name: {
+                    firstName: "",
+                    lastName: ""
+                },
+                date: "",
+                signature: ""
+            }
+        };
+    </script>
+</body>
+</html>
