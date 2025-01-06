@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Partnership Agreement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .input-full {
+            width: 100%;
+            padding: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const inputs = {
+            partnerOne: {
+                firstName: '',
+                lastName: '',
+                streetAddress: '',
+                city: '',
+                state: '',
+                postalCode: '',
+                country: '',
+                contribution: '',
+                contributionValue: ''
+            },
+            partnerTwo: {
+                firstName: '',
+                lastName: '',
+                streetAddress: '',
+                city: '',
+                state: '',
+                postalCode: '',
+                country: '',
+                contribution: '',
+                contributionValue: ''
+            },
+            dates: {
+                agreementEffectiveDate: '',
+                partnershipStartDate: '',
+                assetsAcquisitionDate: '',
+                commencementDate: ''
+            },
+            partnership: {
+                state: '',
+                name: '',
+                purpose: '',
+                businessAddress: {
+                    streetAddress: '',
+                    streetAddressLine2: '',
+                    city: '',
+                    state: '',
+                    postalCode: '',
+                    country: ''
+                },
+                initialCapital: {
+                    amount1: '',
+                    amount2: ''
+                }
+            }
+        };
+    </script>
+
+    <h1>Partnership Agreement</h1>
+
+    <p>This PARTNERSHIP AGREEMENT ("Agreement") herein is effective as of the {{dates.agreementEffectiveDate}}.</p>
+
+    <h3>BETWEEN:</h3>
+    <table>
+        <tr>
+            <td>Partner 1:</td>
+            <td>{{partnerOne.firstName}} {{partnerOne.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Located at:</td>
+            <td>{{partnerOne.streetAddress}}, {{partnerOne.city}}, {{partnerOne.state}}, {{partnerOne.postalCode}},
+                {{partnerOne.country}}</td>
+        </tr>
+    </table>
+
+    <p>-and-</p>
+
+    <table>
+        <tr>
+            <td>Partner 2:</td>
+            <td>{{partnerTwo.firstName}} {{partnerTwo.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Located at:</td>
+            <td>{{partnerTwo.streetAddress}}, {{partnerTwo.city}}, {{partnerTwo.state}}, {{partnerTwo.postalCode}},
+                {{partnerTwo.country}}</td>
+        </tr>
+    </table>
+
+    <p>WHEREAS {{partnerOne.firstName}} {{partnerOne.lastName}} and {{partnerTwo.firstName}} {{partnerTwo.lastName}}
+        entered into Partnership (as defined herein) effective as of {{dates.partnershipStartDate}} on the terms and
+        conditions hereinafter set forth;</p>
+
+    <p>AND WHEREAS from and following {{dates.assetsAcquisitionDate}}, the Partnership acquired certain assets required
+        by it to carry on its business.</p>
+
+    <p>NOW THEREFORE THIS AGREEMENT WITNESSETH that in consideration of the premises and themutual covenants, agreements
+        and conditions herein contained, it is hereby covenanted, agreed anddeclared by and among the Partners (as
+        defined herein) as follows:</p>
+
+    <h3>1. Creation of Partnership</h3>
+    <p>By this Agreement, the Partners enter into a general partnership (the "Partnership") in accordance with the laws
+        of the State of {{partnership.state}}. Subject to the terms and conditions hereof, the parties hereto agree to
+        carry on the Business in partnership.</p>
+
+    <h3>2. Name of Partnership</h3>
+    <p>The name of the Partnership shall be {{partnership.name}} and/or such other name or names as the Partners may
+        from time to time agree upon in writing and no party shall carry on business under such name except as a Partner
+        of the Partnership.</p>
+
+    <h3>3. Purpose of Partnership</h3>
+    <p>The Partnership is established for the following purpose:</p>
+    <p>{{partnership.purpose}}</p>
+
+    <h3>4. Term</h3>
+    <p>The partnership's existence shall commence on {{dates.commencementDate}} and shall continue until dissolved
+        either by mutual agreement or by operation of law.</p>
+
+    <h3>5. Location of Business</h3>
+    <p>The principal business office of the Partnership shall be located at the following address or other such place as
+        the Partners may from time to time designate:</p>
+    <table>
+        <tr>
+            <td>Street Address:</td>
+            <td>{{partnership.businessAddress.streetAddress}}</td>
+        </tr>
+        <tr>
+            <td>Street Address Line 2:</td>
+            <td>{{partnership.businessAddress.streetAddressLine2}}</td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td>{{partnership.businessAddress.city}}</td>
+        </tr>
+        <tr>
+            <td>State/Province:</td>
+            <td>{{partnership.businessAddress.state}}</td>
+        </tr>
+        <tr>
+            <td>Postal/Zip Code:</td>
+            <td>{{partnership.businessAddress.postalCode}}</td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td>{{partnership.businessAddress.country}}</td>
+        </tr>
+    </table>
+
+    <h3>7. Capital Contributions</h3>
+    <p>The initial partnership capital shall be $ {{partnership.initialCapital.amount1}}
+        ({{partnership.initialCapital.amount2}}). Each of the Partners contributes to the capital of the Partnership, in
+        cash, property, or services in agreed upon value, as follows:</p>
+
+    <table>
+        <tr>
+            <td>Partner Name:</td>
+            <td>{{partnerOne.firstName}} {{partnerOne.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Contribution:</td>
+            <td>{{partnerOne.contribution}}</td>
+        </tr>
+        <tr>
+            <td>Contribution Value:</td>
+            <td>{{partnerOne.contributionValue}}</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td>Partner Name:</td>
+            <td>{{partnerTwo.firstName}} {{partnerTwo.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Contribution:</td>
+            <td>{{partnerTwo.contribution}}</td>
+        </tr>
+        <tr>
+            <td>Contribution Value:</td>
+            <td>{{partnerTwo.contributionValue}}</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
