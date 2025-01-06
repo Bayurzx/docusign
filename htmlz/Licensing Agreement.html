@@ -65,44 +65,87 @@
         }
     </style>
     <script>
+        // const inputs = {
+        //     // Agreement Basic Info
+        //     agreementExecutionDate: "",
+
+        //     // Licensee Information
+        //     licenseeCompany: "",
+        //     typeOfCompany: "",
+        //     state: "",
+        //     streetAddress: "",
+        //     city: "",
+        //     state2: "",
+        //     postalCode: "",
+        //     country: "",
+
+        //     // Software and Payment Details
+        //     copyrightProduct: "",
+        //     rateTransactionInNumbers: "",
+        //     rateTransactionInWords: "",
+
+        //     // Term Details
+        //     termDuration: "",
+        //     termDurationInNumbers: "",
+        //     termType: "",
+
+        //     // Governing Law
+        //     governingState: "",
+
+        //     // Licensor Signature Details
+        //     licensorFirstName: "",
+        //     licensorLastName: "",
+        //     licensorPosition: "",
+        //     licensorSignDate: "",
+
+        //     // Licensee Signature Details
+        //     licenseeFirstName: "",
+        //     licenseeLastName: "",
+        //     licenseePosition: "",
+        //     licenseeSignDate: ""
+        // };
+
         const inputs = {
-            // Agreement Basic Info
-            agreementExecutionDate: "",
-
-            // Licensee Information
-            licenseeCompany: "",
-            typeOfCompany: "",
-            state: "",
-            streetAddress: "",
-            city: "",
-            state2: "",
-            postalCode: "",
-            country: "",
-
-            // Software and Payment Details
-            copyrightProduct: "",
-            rateTransactionInNumbers: "",
-            rateTransactionInWords: "",
-
-            // Term Details
-            termDuration: "",
-            termDurationInNumbers: "",
-            termType: "",
-
-            // Governing Law
-            governingState: "",
-
-            // Licensor Signature Details
-            licensorFirstName: "",
-            licensorLastName: "",
-            licensorPosition: "",
-            licensorSignDate: "",
-
-            // Licensee Signature Details
-            licenseeFirstName: "",
-            licenseeLastName: "",
-            licenseePosition: "",
-            licenseeSignDate: ""
+            agreement: {
+                executionDate: "",
+                governingState: "",
+                termDuration: "",
+                termDurationInNumbers: "",
+                termType: "",
+                rateTransactionInNumbers: "",
+                rateTransactionInWords: ""
+            },
+            licensor: {
+                companyName: "InstaSoft, Inc.",
+                streetAddress: "658 Gladyce Road",
+                city: "Port Anastacloton",
+                state: "Louisiana",
+                postalCode: "70383",
+                signature: {
+                    firstName: "",
+                    lastName: "",
+                    position: "",
+                    date: ""
+                }
+            },
+            licensee: {
+                companyName: "",
+                typeOfCompany: "",
+                streetAddress: "",
+                city: "",
+                state: "",
+                postalCode: "",
+                country: "",
+                signature: {
+                    firstName: "",
+                    lastName: "",
+                    position: "",
+                    date: ""
+                }
+            },
+            software: {
+                copyrightProduct: ""
+            }
         };
     </script>
 </head>
@@ -110,18 +153,18 @@
 <body>
     <h1 class="center">Licensing Agreement</h1>
 
-    <p>This License Agreement (hereinafter known as "Agreement" or "License Agreement") is made effective on
-        {{agreementExecutionDate}}, by and between:</p>
+    <p>This License Agreement (hereinafter referred to as "Agreement" or "License Agreement") is made effective on
+        {{agreement.executionDate}}, by and between:</p>
 
-    <p><strong>InstaSoft, Inc.</strong>, a corporation established under the laws of the state of Louisiana, with its
-        principal address at 658 Gladyce Road, Port Anastacloton, Louisiana, 70383 (hereinafter known as "Licensor");
-    </p>
+    <p><strong>{{licensor.companyName}}</strong>, a corporation established under the laws of the state of Louisiana,
+        with its principal address at {{licensor.streetAddress}}, {{licensor.city}}, {{licensor.state}},
+        {{licensor.postalCode}} (hereinafter known as "Licensor");</p>
 
     <p class="center">- and -</p>
 
-    <p>{{licenseeCompany}}, a {{typeOfCompany}} established under the laws of the state of {{state}}, with principal
-        address at {{streetAddress}}, {{city}}, {{state2}}, {{postalCode}}, {{country}} (hereinafter known as
-        "Licensee");</p>
+    <p>{{licensee.companyName}}, a {{licensee.typeOfCompany}} established under the laws of the state of
+        {{licensee.state}}, with principal address at {{licensee.streetAddress}}, {{licensee.city}}, {{licensee.state}},
+        {{licensee.postalCode}}, {{licensee.country}} (hereinafter known as "Licensee");</p>
 
     <p><strong>WHEREAS</strong>, the Licensor is the possessor and owner of Copyright of {{copyrightProduct}}
         (hereinafter known as "Software");</p>
@@ -166,8 +209,6 @@
         on every transaction utilizing the Software shall apportion the rate of {{rateTransactionInNumbers}}
         ({{rateTransactionInWords}}).</p>
 
-
-
     <div class="heading">Ownership and License Grants</div>
     <p>The Parties acknowledge that retention over the ownership, title, and interest over the copyright of the Software
         shall be with Licensor. Subject to the terms and conditions herein, Licensor grants to Licensee the
@@ -175,17 +216,17 @@
         them, except for End-User license where Licensee may distribute licenses granted unto them.</p>
 
     <div class="heading">Representation</div>
-    <p>Licensor represents and warrants to Licensee that upon that, upon execution of this Agreement, the Licensor has
-        the full capacity to authorize and license the Software as described above.</p>
+    <p>Licensor represents and warrants to Licensee that upon execution of this Agreement, the Licensor has the full
+        capacity to authorize and license the Software as described above.</p>
 
     <div class="heading">Reports</div>
     <p>Licensee acknowledges that all transactions processed by the software are logged in a database. Reports of
-        transactions shall be sent by Licensee to Licensor on a monthly basis on every last day of the month.</p>
+        transactions shall be sent by Licensee to Licensor monthly, no later than the last day of each month.</p>
 
     <div class="heading">Compliance</div>
-    <p>Licensee shall, at all times, perform reasonable efforts for the use of the Software as permitted in this
-        Agreement. Any changes or intentions by Licensee for other purposes outside the terms of this Agreement shall
-        require consent and approval of Licensor.</p>
+    <p>Licensee shall, at all times, make reasonable efforts for the use of the Software as permitted in this Agreement.
+        Any changes or intentions by Licensee for other purposes outside the terms of this Agreement shall require
+        consent and approval of Licensor.</p>
 
     <div class="heading">Disclaimer</div>
     <p>The Software is provided "as is". Licensor shall not be held liable for any direct, indirect, incidental, or
@@ -194,7 +235,7 @@
 
     <div class="heading">Warranties</div>
     <p>Licensee warrants that they will comply in all respects with the terms and conditions of this Agreement as well
-        as compliance with local, state, and international laws. Licensee bears sole responsibility in any violation
+        as compliance with local, state, and international laws. Licensee bears sole responsibility for any violation
         constituting any act with the use of the Software and in no case shall such violation be attributable to
         Licensor. Nothing in this Agreement shall be deemed as a warranty by Licensee in the grant of use of the
         Software.</p>
@@ -206,8 +247,8 @@
         this Agreement.</p>
 
     <div class="heading">Term</div>
-    <p>The term of this Agreement shall commence on the date which this Agreement is made effective and shall continue
-        for a period of {{termDuration}} ({{termDurationInNumbers}}) {{termType}}.</p>
+    <p>The term of this Agreement shall commence on the date this Agreement is made effective and shall continue for a
+        period of {{termDuration}} ({{termDurationInNumbers}}) {{termType}}.</p>
 
     <div class="heading">Termination</div>
     <p>Parties may terminate this agreement with or without cause by submitting a written notice to the other Party, 30
@@ -220,27 +261,23 @@
     <p>This Agreement inures to the benefit of, and is binding upon, the parties and their respective legal
         representatives, successors, and permitted assigns.</p>
 
-
-
-
     <div class="heading">Non-waiver</div>
     <p>The failure of either party to insist upon the strict compliance with and performance of any of the terms,
-        conditions and covenants hereof shall not be deemed as a relinquishment or waiver of any rights or remedy that
-        said party may have nor shall it be construed as a waiver of any subsequent breach or default of the terms,
-        conditions, and covenants herein contained, but the same shall continue to be in full force and effect. No
-        waiver by either party shall be deemed to have been made unless expressed in writing and signed by the waiving
-        party.</p>
+        conditions and covenants hereof shall not be deemed as a relinquishment or waiver of any right that said party
+        may have nor shall it be construed as a waiver of any subsequent breach or default of the terms, conditions, and
+        covenants herein contained, but the same shall continue to be in full force and effect. No waiver by either
+        party shall be deemed to have been made unless expressed in writing and signed by the waiving party.</p>
 
     <div class="heading">Counterparts</div>
     <p>This contract may be executed in two or more counterparts, each of which shall be deemed an original, but all of
-        which together shall constitute as one and the same contract.</p>
+        which together shall constitute one and the same contract.</p>
 
     <div class="heading">Agreement Modification</div>
-    <p>No modification or alteration of this Contract shall be considered as having been made unless executed in writing
-        and duly signed by the parties hereto.</p>
+    <p>No modification or alteration of this Contract shall be considered made unless executed in writing and duly
+        signed by the parties hereto.</p>
 
     <div class="heading">Governing Law and Dispute Resolution</div>
-    <p>In the event of any damage, dispute, claim or controversy arising out of this Agreement, the Parties acknowledge
+    <p>In the event of any dispute, claim, damage, or controversy arising out of this Agreement, the Parties acknowledge
         that this Agreement is governed exclusively by the laws of the State of {{governingState}}. The dispute shall be
         resolved within sixty (60) days and shall be submitted for arbitration proceedings, with the arbitrator elected
         by both parties. The cost of the proceedings shall be equally shared by the Parties. However, the prevailing
@@ -269,7 +306,6 @@
             </td>
         </tr>
     </table>
-
 </body>
 
 </html>
