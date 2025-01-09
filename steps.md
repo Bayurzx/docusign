@@ -85,6 +85,9 @@ Markdown as an intermediate format. Markdown allows you to write content that ca
 - Puppeteer or wkhtmltopdf to convert HTML to PDF.
 
 
+# Thursday, January 9, 2025 12:18:49 PM
+### 
+-  Started work on how to run the algorithm for this process and return back your LLM edited html string
 
 ### Bonus
 - Was able to create clones like whatsapp etc.

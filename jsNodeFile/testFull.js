@@ -94,6 +94,98 @@ function parseContractSections(htmlString) {
     }
  }
 
+ async function reconstructHtml(input) {
+    try {
+        // Handle either file path or direct JSON object
+        const sectionsData = typeof input === 'string' 
+            ? JSON.parse(await fs.readFile(input, 'utf8'))
+            : input;
+        
+        // Sort sections by order
+        const orderedSections = Object.values(sectionsData.sections)
+            .sort((a, b) => a.order - b.order);
+ 
+        // Reconstruct HTML
+        let htmlContent = '';
+        orderedSections.forEach(section => {
+            htmlContent += `<!-- SECTION: ${JSON.stringify({
+                key: section.key,
+                order: section.order,
+                type: section.type,
+                hasVariables: section.hasVariables
+            })} -->\n`;
+            htmlContent += section.content + '\n';
+            htmlContent += `<!-- END_SECTION: ${section.key} -->\n\n`;
+        });
+ 
+        // Validate reconstructed HTML
+        const validationResult = validateReconstructedHtml(htmlContent);
+        if (!validationResult.isValid) {
+            console.warn('\nWarning in reconstructed HTML:', validationResult.message);
+        }
+ 
+        // If input was a file path, save the output
+        if (typeof input === 'string') {
+            const outputPath = path.join(
+                path.dirname(input),
+                `reconstructed_${path.basename(input, '_sections.json')}.html`
+            );
+            
+            // Only save if validation passed
+            if (validationResult.isValid) {
+                await fs.writeFile(outputPath, htmlContent);
+                console.log(`\nHTML reconstructed successfully! Saved to: ${outputPath}`);
+            } else {
+                throw new Error(`HTML validation failed: ${validationResult.message}`);
+            }
+        }
+ 
+        return validationResult.isValid ? htmlContent : null;
+ 
+    } catch (error) {
+        console.error('Error reconstructing HTML:', error.message);
+        throw error;
+    }
+ }
+ 
+ function validateReconstructedHtml(html) {
+    const validation = {
+        isValid: true,
+        message: ''
+    };
+ 
+    // Basic structure checks
+    if (!html.includes('<!DOCTYPE html>')) {
+        validation.isValid = false;
+        validation.message += 'Missing DOCTYPE declaration. ';
+    }
+ 
+    // Check for opening and closing tags
+    const criticalTags = ['html', 'head', 'body'];
+    criticalTags.forEach(tag => {
+        if (!html.includes(`<${tag}`) || !html.includes(`</${tag}>`)) {
+            validation.isValid = false;
+            validation.message += `Missing ${tag} tag. `;
+        }
+    });
+ 
+    // Check section continuity
+    const sectionRegex = /<!-- SECTION: (.*?) -->/g;
+    let match;
+    let previousOrder = 0;
+    
+    while ((match = sectionRegex.exec(html)) !== null) {
+        const metadata = JSON.parse(match[1]);
+        if (metadata.order <= previousOrder && previousOrder !== 0) {
+            validation.isValid = false;
+            validation.message += `Invalid section order at section ${metadata.key}. `;
+        }
+        previousOrder = metadata.order;
+    }
+ 
+    return validation;
+ }
+ 
 
 async function processContractWithLLM(htmlPath) {
     try {
@@ -222,11 +314,6 @@ async function callLLM(prompt) {
    }
 }
 
-async function callLLM2(prompt) {
-    return prompt + "          "
-    
-}
-
 function validateProcessedContent(content) {
    // Basic validation to ensure HTML structure is maintained
    const originalTags = content.match(/<[^>]+>/g) || [];
@@ -255,7 +342,7 @@ async function callLLMWithRetry(prompt, maxRetries = 3) {
 }
 
 // Example usage
-const contractPath = './contract.html';
+const contractPath = './Supply Agreement.html';
 processContractWithLLM(contractPath)
     .then(finalHtml => {
         console.log('Contract processed successfully');
