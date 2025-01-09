@@ -1,5 +1,9 @@
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
 <!DOCTYPE html>
 <html lang="en">
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
 
 <head>
     <meta charset="UTF-8">
@@ -100,11 +104,21 @@
         };
     </script>
 </head>
+<!-- END_SECTION: documentHead -->
 
+
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
 <body>
     <div class="pdf-container">
-        <h1>Supply Agreement</h1>
+        <!-- END_SECTION: bodyStart -->
 
+        <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
+        <h1>Supply Agreement</h1>
+        <!-- END_SECTION: agreementTitle -->
+
+        
+        <!-- SECTION: {"key": "partiesSection_1", "order": 5, "type": "legal", "hasVariables": true} -->
         <h2>I. Agreement Parties</h2>
         <p>
             This Supply Agreement (the "Agreement") is executed by and between {{company.name}} with registered office
@@ -120,7 +134,9 @@
             NOW, THEREFORE, in exchange for the mutual promises and obligations detailed herein, the Company and the
             Supplier (each a "Party" and together, the "Parties") hereby agree as follows:
         </p>
+        <!-- END_SECTION: partiesSection_1 -->
 
+        <!-- SECTION: {"key": "partiesSection_2_6", "order": 6, "type": "legal", "hasVariables": true} -->
         <h2>II. Supply of Goods</h2>
         <p>The Supplier agrees to provide the following items (hereinafter referred to as the "Products"):</p>
 
@@ -198,7 +214,10 @@
             by the Company must be replaced or repaired within {{warrantyPeriod}} at no cost, or the Company will be
             reimbursed.
         </p>
+        <!-- END_SECTION: partiesSection_2_6 -->
 
+
+        <!-- SECTION: {"key": "partiesSection", "order": 7, "type": "legal", "hasVariables": true} -->
         <h2>VII. Force Majeure</h2>
         <p>
             The Supplier is exempt from liability for delays due to force majeure events including earthquakes, floods,
@@ -222,6 +241,11 @@
         <p>
             <strong>NON-WAIVER:</strong> Failure to enforce any provision does not constitute waiver of rights.
         </p>
+
+        <!-- END_SECTION: partiesSection -->
+
+
+        <!-- SECTION: {"key": "partiesSection_8", "order": 8, "type": "legal", "hasVariables": true} -->
         <p>
             <strong>GOVERNING LAW:</strong> This Agreement is governed by the laws of {{governingState}}.
         </p>
@@ -244,7 +268,12 @@
                 </td>
             </tr>
         </table>
+
+        <!-- END_SECTION: partiesSection_8 -->
+
+        <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
     </div>
 </body>
 
 </html>
+<!-- END_SECTION: bodyEnd -->
