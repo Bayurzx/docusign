@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // Function to read a JSON file and get the value of a specific key
-const filePath = './data.json';
+const filePath = './testData.json';
 function getValueFromJsonFile(filePath, key) {
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {

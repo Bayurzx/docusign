@@ -1,5 +1,10 @@
+<!-- html -->
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
 <!DOCTYPE html>
 <html lang="en">
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
 
 <head>
   <meta charset="UTF-8">
@@ -106,14 +111,73 @@
       color: #666;
     }
   </style>
+
+  <script>
+    // remember to duplicate for person 2
+    const inputs = {
+      person_1: {
+        full_name: {
+          first_name: 'John',
+          last_name: 'Doe'
+        },
+        address: {
+          street: '123 Main St',
+          city: 'Anytown',
+          state: 'CA',
+          zip: '12345'
+        },
+        state: 'CA',
+        country: 'USA',
+        current_date: new Date().toLocaleDateString(),
+        date: '2021-01-01',
+        contract_name: 'Sample Contract',
+        contract_type: 'Confidentiality Agreement',
+        signature_code: '123456',
+        jurisdiction: 'California',
+
+      },
+      person_2: {
+        full_name: {
+          first_name: 'Jane',
+          last_name: 'Smith'
+        },
+        address: {
+          street: '456 Oak Rd',
+          city: 'Othertown',
+          state: 'NY',
+          zip: '67890'
+        },
+        state: 'NY',
+        country: 'USA',
+        current_date: new Date().toLocaleDateString(),
+        date: '2022-05-15',
+        contract_name: 'Sample Contract',
+        contract_type: 'Confidentiality Agreement',
+        signature_code: '789012',
+        jurisdiction: 'New York',
+
+      }
+    };
+
+
+  </script>
 </head>
+<!-- END_SECTION: documentHead -->
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
 
 <body>
   <div class="pdf-container">
+    <!-- END_SECTION: bodyStart -->
 
+    <!-- SECTION: {"key": "confidentialityAgreement", "order": 4, "type": "content", "hasVariables": false} -->
     <h1>CONFIDENTIALITY AGREEMENT</h1>
+    <!-- END_SECTION: agreementTitle -->
 
-    <p>This Confidentiality Agreement (the "Agreement") is made on <span class="spacer"></span>.</p>
+
+    <!-- SECTION: {"key": "partiesSection_1", "order": 5, "type": "legal", "hasVariables": true} -->
+    <p>This Confidentiality Agreement (the "Agreement") is made on <span
+        class="spacer">{{person_1.current_date}}</span>.</p>
     <p>By and between:</p>
     <table>
       <tr>
@@ -121,16 +185,26 @@
         <th>Party 2</th>
       </tr>
       <tr>
-        <td>Name: <span class="spacer"></span><br>Address: <span class="spacer"></span></td>
-        <td>Name: <span class="spacer"></span><br>Address: <span class="spacer"></span></td>
+        <td>
+          Name: <span class="spacer">{{person_1.full_name.first_name}} {{person_1.full_name.last_name}}</span><br>
+          Address: <span class="spacer">{{person_1.address.street}}, {{person_1.address.city}},
+            {{person_1.address.state}} {{person_1.address.zip}}, {{person_1.country}}</span>
+        </td>
+        <td>
+          Name: <span class="spacer">{{person_2.full_name.first_name}} {{person_2.full_name.last_name}}</span><br>
+          Address: <span class="spacer">{{person_2.address.street}}, {{person_2.address.city}},
+            {{person_2.address.state}} {{person_2.address.zip}}, {{person_2.country}}</span>
+        </td>
       </tr>
     </table>
 
     <div class="section">
       <h2>I. Recitals</h2>
       <p>
-        WHEREAS, the Parties of this Agreement executed a contract named <span class="spacer"></span> on
-        <span class="spacer"></span>, and they wish to set forth the terms and conditions of their non-disclosure
+        WHEREAS, the Parties of this Agreement executed a contract named <span
+          class="spacer">{{person_1.contract_name}}</span> on
+        <span class="spacer">{{person_1.date}}</span>, and they wish to set forth the terms and conditions of their
+        non-disclosure
         commitments via a separate agreement.
       </p>
       <p>
@@ -138,8 +212,10 @@
         depending on their role in disclosing or receiving confidential information.
       </p>
     </div>
+    <!-- END_SECTION: partiesSection_1 -->
 
 
+    <!-- SECTION: {"key": "partiesSection_2_10", "order": 6, "type": "legal", "hasVariables": false} -->
 
     <div class="section">
       <h2>II. Confidential Information</h2>
@@ -261,23 +337,27 @@
         specified in this Agreement.
       </p>
     </div>
+    <!-- END_SECTION: partiesSection_2_10 -->
 
 
 
+    <!-- SECTION: {"key": "partiesSection_11_12", "order": 7, "type": "legal", "hasVariables": true} -->
 
 
     <div class="section">
       <h2>XI. Governing Law</h2>
       <p>
-        This Agreement shall be governed by and construed in accordance with the laws of [Insert Jurisdiction], without
+        This Agreement shall be governed by and construed in accordance with the laws of <span
+          class="spacer">{{person_1.jurisdiction}}</span>, without
         regard to its conflict of law principles. In the event of any dispute arising from or related to this Agreement,
-        the parties agree to submit to the exclusive jurisdiction of the courts in [Insert Jurisdiction] for the
-        resolution of such disputes. Any proceedings related to this Agreement shall be conducted in the [Insert
-        Jurisdiction] courts, and the prevailing party shall be entitled to recover all legal costs, including attorney
+        the parties agree to submit to the exclusive jurisdiction of the courts in <span
+          class="spacer">{{person_1.jurisdiction}}</span> for the
+        resolution of such disputes. Any proceedings related to this Agreement shall be conducted in the <span
+          class="spacer">{{person_1.jurisdiction}}</span> courts, and the prevailing party shall be entitled to recover
+        all legal costs, including attorney
         fees, incurred in connection with the dispute.
       </p>
     </div>
-
 
     <div class="signature-section">
       <div class="signature-block">
@@ -289,47 +369,23 @@
         <p>Signature of Party 2</p>
       </div>
     </div>
+
     <div class="signature-section">
       <div class="signature-block">
-        <p class="underlinedText">[____Insert Fullname_____]</p>
+        <p class="underlinedText">{{person_1.full_name.first_name}} {{person_1.full_name.last_name}}</p>
         <!-- <p>Fullname of Party 1</p> -->
       </div>
       <div class="signature-block">
-        <p class="underlinedText">[____Insert Fullname_____]</p>
+        <p class="underlinedText">{{person_2.full_name.first_name}} {{person_2.full_name.last_name}}</p>
         <!-- <p>Fullname of Party 2</p> -->
       </div>
+
+      <!-- END_SECTION: partiesSection_11_12 -->
+
+      <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
     </div>
-  </div>
+
 </body>
 
 </html>
-
-<script>
-  // remember to duplicate for person 2
-  let inputs = {
-    person_1: {
-      full_name: {
-        first_name: 'John',
-        last_name: 'Doe'
-      },
-      address: {
-        street: '123 Main St',
-        city: 'Anytown',
-        state: 'CA',
-        zip: '12345'
-      },
-      state: 'CA',
-      country: 'USA',
-      current_date: new Date().toLocaleDateString(),
-      date: "2021-01-01",
-      contract_name: "Sample Contract",
-      contract_type: "Confidentiality Agreement",
-      signature_code: "123456",
-      jurisdiction: "California",
-      ai_editing_instruction: {
-        one: "Edit/Update the placeholders.(html class 'spacer') with info provided and use good styling.",
-        two: "Do instruction in square brackets in html text'[follow-instruction]'.",
-      }
-    }
-  }
-</script>
+<!-- END_SECTION: bodyEnd -->

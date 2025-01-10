@@ -1,5 +1,11 @@
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
+
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
 
 <head>
     <meta charset="UTF-8">
@@ -95,9 +101,6 @@
         }
     </style>
 
-</head>
-
-<body>
     <script>
         const inputs = {
             // Agreement Date and Parties
@@ -163,11 +166,26 @@
             }
         };
     </script>
+</head>
 
+<!-- END_SECTION: documentHead -->
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
+
+<body>
     <div class="pdf-container">
+        <!-- END_SECTION: bodyStart -->
+
+        <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
+
         <div class="header">
             <h1>Subscription Agreement</h1>
         </div>
+        <!-- END_SECTION: agreementTitle -->
+
+
+        <!-- SECTION: {"key": "Section_1", "order": 5, "type": "legal", "hasVariables": true} -->
+
         <p>This Subscription Agreement (referred to as the "Agreement") is executed on {{date}}, between:</p>
         <table border="1">
             <tr>
@@ -211,6 +229,10 @@
             <p>The Company shall deliver the shares within {{subscription.deliveryPeriod}} days of receiving payment,
                 either
                 electronically or via physical certificates.</p>
+            <!-- END_SECTION: Section_1 -->
+
+
+            <!-- SECTION: {"key": "Section_2", "order": 5, "type": "legal", "hasVariables": false} -->
             <h3>2. Representations and Warranties</h3>
             <h4>2.1 Company Representations</h4>
             <p>The Company represents and warrants that:</p>
@@ -249,6 +271,9 @@
                 <li>Survive the completion of the share transfer;</li>
                 <li>Apply to all subsequent transactions between the Parties related to this investment.</li>
             </ul>
+            <!-- END_SECTION: Section_2 -->
+
+            <!-- SECTION: {"key": "Section_3", "order": 5, "type": "legal", "hasVariables": true} -->
             <h3>3. Transaction Closing</h3>
             <p>Unless otherwise specified in writing by mutual agreement of the Parties, the finalization of this
                 transaction (the "Closing") shall be conducted through digital means on {{closing.date}}.</p>
@@ -290,7 +315,9 @@
                     </td>
                 </tr>
             </table>
+            <!-- END_SECTION: Section_3 -->
 
+            <!-- SECTION: {"key": "Section_4", "order": 5, "type": "legal", "hasVariables": false} -->
             <h3>5. General Provisions</h3>
 
             <table border="1" cellpadding="10">
@@ -340,6 +367,9 @@
                     </td>
                 </tr>
             </table>
+            <!-- END_SECTION: Section_4 -->
+
+            <!-- SECTION: {"key": "Section_5", "order": 5, "type": "legal", "hasVariables": true} -->
             <div class="section">
                 <table>
                     <tr>
@@ -362,7 +392,12 @@
                     </tr>
                 </table>
             </div>
+            <!-- END_SECTION: Section_5 -->
+
+            <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
         </div>
 </body>
 
 </html>
+
+<!-- END_SECTION: bodyEnd -->

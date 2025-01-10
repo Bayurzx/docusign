@@ -1,5 +1,12 @@
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
+
 <!DOCTYPE html>
 <html lang="en">
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,6 +59,7 @@
             }
         };
     </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,29 +68,35 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             max-width: 850px;
             margin: 0 auto;
             background: white;
             padding: 40px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        td, th {
+
+        td,
+        th {
             border: 1px solid #ddd;
             padding: 12px;
         }
+
         h1 {
             color: #2c3e50;
             text-align: center;
             margin-bottom: 30px;
             font-size: 24px;
         }
+
         h3 {
             color: #2c3e50;
             margin-top: 25px;
@@ -91,23 +105,28 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
         }
+
         .signature-box {
             border: 1px solid #ddd;
             height: 60px;
             margin: 10px 0;
             background: #fafafa;
         }
+
         ul {
             padding-left: 20px;
         }
+
         li {
             margin-bottom: 8px;
         }
+
         @media print {
             body {
                 background: white;
                 padding: 0;
             }
+
             .container {
                 box-shadow: none;
                 padding: 20px;
@@ -115,11 +134,27 @@
         }
     </style>
 </head>
+
+<!-- END_SECTION: documentHead -->
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
+
 <body>
     <div class="container">
+
+        <!-- END_SECTION: bodyStart -->
+
+        <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
+
         <h1>Residential Room Rental Agreement</h1>
 
-        <p>This Residential Room Rental Agreement (referred to as "Agreement") is entered into between {{houseowner.firstName}} {{houseowner.lastName}} (the "Property Owner") and {{renter.firstName}} {{renter.lastName}} (the "Tenant"), concerning the rental of a room at the following location:</p>
+        <!-- END_SECTION: agreementTitle -->
+
+        <!-- SECTION: {"key": "Section_1", "order": 5, "type": "legal", "hasVariables": true} -->
+
+        <p>This Residential Room Rental Agreement (referred to as "Agreement") is entered into between
+            {{houseowner.firstName}} {{houseowner.lastName}} (the "Property Owner") and {{renter.firstName}}
+            {{renter.lastName}} (the "Tenant"), concerning the rental of a room at the following location:</p>
 
         <table>
             <tr>
@@ -149,14 +184,21 @@
         </table>
 
         <h3>1. Duration of Agreement</h3>
-        <p>The rental period begins on {{terms.startDate}} and continues on a month-to-month basis. Either party may terminate this agreement by providing {{terms.noticePeriod}} days written notice.</p>
+        <p>The rental period begins on {{terms.startDate}} and continues on a month-to-month basis. Either party may
+            terminate this agreement by providing {{terms.noticePeriod}} days written notice.</p>
 
         <h3>2. Financial Terms</h3>
-        <p>Monthly rent is set at {{terms.rent}}, payable via {{terms.paymentMethod}} to the Property Owner by the {{terms.paymentDay}} of each month.</p>
+        <p>Monthly rent is set at {{terms.rent}}, payable via {{terms.paymentMethod}} to the Property Owner by the
+            {{terms.paymentDay}} of each month.</p>
+
 
         <h3>3. Agreement Termination</h3>
-        <p>Standard termination requires {{terms.noticePeriod}} days notice. In cases of non-payment, the Property Owner may initiate eviction with 3 days notice after providing payment reminder and grace period.</p>
+        <p>Standard termination requires {{terms.noticePeriod}} days notice. In cases of non-payment, the Property Owner
+            may initiate eviction with 3 days notice after providing payment reminder and grace period.</p>
 
+        <!-- END_SECTION: Section_1 -->
+
+        <!-- SECTION: {"key": "Section_2", "order": 6, "type": "legal", "hasVariables": false} -->
         <h3>4. House Guidelines</h3>
         <ul>
             <li>Common areas must be maintained clean and orderly</li>
@@ -166,6 +208,10 @@
             <li>Laundry facilities require advance scheduling</li>
             <li>Damage responsibility lies with the causing party</li>
         </ul>
+
+        <!-- END_SECTION: Section_2 -->
+
+        <!-- SECTION: {"key": "Section_3", "order": 6, "type": "legal", "hasVariables": true} -->
 
         <h3>5. Utility Cost Distribution</h3>
         <table>
@@ -205,7 +251,10 @@
             <li>{{fixtures.list[4]}}</li>
         </ul>
 
-        <p>A security deposit of {{fixtures.depositAmount}} is required. This will be returned within 10 days of move-out, less any documented damages.</p>
+        <p>A security deposit of {{fixtures.depositAmount}} is required. This will be returned within 10 days of
+            move-out, less any documented damages.</p>
+
+
 
         <h3>7. Additional Provisions</h3>
         <ul>
@@ -214,6 +263,8 @@
             <li>Changes require written consent from all parties</li>
             <li>Rights transfer requires prior written approval</li>
         </ul>
+
+
 
         <p>This agreement falls under {{governingLaw.state}} state law.</p>
 
@@ -232,5 +283,10 @@
             </tr>
         </table>
     </div>
+    <!-- END_SECTION: Section_3 -->
+
+    <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
 </body>
+
 </html>
+<!-- END_SECTION: bodyEnd -->

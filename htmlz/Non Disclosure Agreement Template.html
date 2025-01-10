@@ -1,5 +1,11 @@
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
+
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
 
 <head>
     <meta charset="UTF-8">
@@ -74,12 +80,52 @@
             padding: 40px 60px;
         }
     </style>
+
+    <script>
+        const inputs = {
+            // Disclosing Party details
+            disclosingPartyName: "",
+            disclosingPartyStreet: "",
+            disclosingPartyCity: "",
+            disclosingPartyState: "",
+            disclosingPartyPostal: "",
+            disclosingPartyCountry: "",
+            disclosingPartySignature: "",
+            disclosingPartyDate: "",
+
+            // Receiving Party details
+            receivingPartyName: "",
+            receivingPartyStreet: "",
+            receivingPartyCity: "",
+            receivingPartyState: "",
+            receivingPartyPostal: "",
+            receivingPartyCountry: "",
+            receivingPartySignature: "",
+            receivingPartyDate: "",
+
+            // Purpose of the Work
+            purposeOfTheWork: ""
+        };
+
+    </script>
 </head>
+
+<!-- END_SECTION: documentHead -->
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
 
 <body>
     <div class="container">
 
+        <!-- END_SECTION: bodyStart -->
+
+        <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
+
         <h1>Non Disclosure Agreement</h1>
+
+        <!-- END_SECTION: agreementTitle -->
+
+        <!-- SECTION: {"key": "Section_1", "order": 5, "type": "legal", "hasVariables": true} -->
 
         <p>This Non-Disclosure and Confidentiality Agreement ("Agreement") is made and entered into by and between
             <u>{{disclosingPartyName}}</u>, referred to hereafter as the "Disclosing Party," whose address is located at
@@ -105,7 +151,9 @@
 
         <p>and collectively referred to as the "Parties".</p>
 
+        <!-- END_SECTION: Section_1 -->
 
+        <!-- SECTION: {"key": "Section_2", "order": 6, "type": "legal", "hasVariables": false} -->
         <p>WHEREAS, the Parties desire to outline the terms and conditions of their non-disclosure obligations through
             this
             Agreement;</p>
@@ -213,6 +261,9 @@
             whether directly or indirectly.</p>
 
 
+        <!-- END_SECTION: Section_2 -->
+
+        <!-- SECTION: {"key": "Section_3", "order": 7, "type": "legal", "hasVariables": true} -->
         <h2>II. Obligations.</h2>
 
         <p>In consideration of the disclosure and release of Confidential Information by or on behalf of the Disclosing
@@ -223,6 +274,11 @@
         <p>The Receiving Party commits to using the Confidential Information exclusively for the purpose of
             <u>{{purposeOfTheWork}}</u>.
         </p>
+
+        <!-- END_SECTION: Section_3 -->
+
+        <!-- SECTION: {"key": "Section_4", "order": 8, "type": "legal", "hasVariables": false} -->
+
 
         <p>The Receiving Party shall take all necessary steps and measures to reduce the risk of disclosure,
             dissemination,
@@ -415,6 +471,11 @@
             solely to
             that specific provision. The remaining provisions will remain in full force and effect.</p>
 
+        <!-- END_SECTION: Section_4 -->
+
+        <!-- SECTION: {"key": "Section_5", "order": 9, "type": "legal", "hasVariables": true} -->
+
+
         <h2>XVIII. Governing Laws</h2>
 
         <p>This Agreement shall be interpreted and enforced under the laws of the United States, excluding other state
@@ -449,34 +510,12 @@
         </div>
 
     </div>
+    <!-- END_SECTION: Section_5 -->
 
-    <script>
-        const inputs = {
-            // Disclosing Party details
-            disclosingPartyName: "",
-            disclosingPartyStreet: "",
-            disclosingPartyCity: "",
-            disclosingPartyState: "",
-            disclosingPartyPostal: "",
-            disclosingPartyCountry: "",
-            disclosingPartySignature: "",
-            disclosingPartyDate: "",
 
-            // Receiving Party details
-            receivingPartyName: "",
-            receivingPartyStreet: "",
-            receivingPartyCity: "",
-            receivingPartyState: "",
-            receivingPartyPostal: "",
-            receivingPartyCountry: "",
-            receivingPartySignature: "",
-            receivingPartyDate: "",
+    <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
 
-            // Purpose of the Work
-            purposeOfTheWork: ""
-        };
-
-    </script>
 </body>
 
 </html>
+<!-- END_SECTION: bodyEnd -->

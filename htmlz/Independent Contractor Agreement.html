@@ -1,5 +1,10 @@
+<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- END_SECTION: documentStart -->
+
+<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
 
 <head>
     <meta charset="UTF-8">
@@ -69,10 +74,96 @@
             display: inline-block;
         }
     </style>
+
+    <script>
+        let inputs = {
+            contract: {
+                name: "Independent Contractor Agreement",
+                date: {
+                    day: "",
+                    month: "",
+                    year: ""
+                },
+                governing_law: ""
+            },
+            contractor: {
+                name: "",
+                address: {
+                    street: "",
+                    street_line_2: "",
+                    city: "",
+                    state: "",
+                    postal: "",
+                    country: ""
+                },
+                phone: "",
+                email: "",
+                signature_date: ""
+            },
+            client: {
+                name: "",
+                address: {
+                    street: "",
+                    street_line_2: "",
+                    city: "",
+                    state: "",
+                    postal: "",
+                    country: ""
+                },
+                phone: "",
+                email: "",
+                signature_date: ""
+            },
+            subject: "",
+            scope_of_work: "",
+            term: {
+                duration: "",
+                start_date: "",
+                end_date: ""
+            },
+            payment: {
+                total_amount: "",
+                schedule: {
+                    initial_payment: {
+                        date: "",
+                        amount: ""
+                    },
+                    first_payment: {
+                        date: "",
+                        amount: ""
+                    },
+                    second_payment: {
+                        date: "",
+                        amount: ""
+                    },
+                    final_payment: {
+                        date: "",
+                        amount: ""
+                    }
+                },
+                late_payment_interest: ""
+            },
+            termination: {
+                notice_period_days: ""
+            }
+        };
+    </script>
 </head>
 
+<!-- END_SECTION: documentHead -->
+
+<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
+
 <body>
+    <!-- END_SECTION: bodyStart -->
+
+    <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
     <h1>Independent Contractor Agreement</h1>
+
+    <!-- END_SECTION: agreementTitle -->
+
+
+    <!-- SECTION: {"key": "Section_0_4", "order": 5, "type": "legal", "hasVariables": true} -->
 
     <p>This Independent Contractor Agreement (referred to herein as the "Agreement") is made and entered into on this
         <span class="input-field">{{contract.date.day}}</span> day of <span
@@ -117,6 +208,7 @@
     <p>NOW, THEREFORE, in consideration of the mutual promises, covenants, and conditions set forth herein, Client and
         Contractor (individually referred to as "Party" and collectively as "Parties") hereby agree as follows:</p>
 
+        
     <h3>I. Scope of Work</h3>
     <p>The specific services to be performed by the Contractor are detailed as follows:</p>
     <div class="input-field" style="min-height: 100px;">{{scope_of_work}}</div>
@@ -167,6 +259,19 @@
             class="input-field">{{termination.notice_period_days}}</span> days advance written notice to the other
         Party. Upon termination, Client shall compensate Contractor for all services rendered through the effective date
         of termination.</p>
+
+        <!-- END_SECTION: Section_0_4 -->
+         
+        <!-- SECTION: {"key": "Section_5_14", "order": 6, "type": "legal", "hasVariables": false} -->
+        <h3>V. Intellectual Property</h3>
+        <p>Intellectual Property refers to any intangible creations of the mind, such as artistic or literary works, designs, images, names (including trade names), trademarks, logos, symbols, patents, copyrights, designs, architecture, concepts, and other items used in commerce. As outlined in this Agreement, the Client's use of the Intellectual Property will not be restricted in any way. Any Intellectual Property acquired by the Contractor during the term of this Agreement shall only be used for the purposes of fulfilling this Agreement. In the event that an intellectual creation is developed by the Contractor during the term of this Agreement, the Parties agree that the intellectual property rights for such creations shall belong to the Client, specifically for the purposes of this Agreement.</p>
+        
+        <h3>VI. No Employer-Employee Relationship</h3>
+        <p>The Parties acknowledge that this Agreement does not create an employer-employee relationship. Both Parties are independent contractors, and this Agreement does not form a partnership or joint venture but is solely a contract for service. The Client is not responsible for paying or contributing to the Contractor's social security, taxes, unemployment, workers' compensation, insurance premiums, or any other benefits provided to the Client’s employees.</p>
+        
+        <h3>VII. Return of Client's Property</h3>
+        <p>In the event that this Agreement is terminated or upon the Client's request, the Contractor agrees to return any and all property owned by the Client. Any digital or electronic data may be deleted upon the Client’s request, or physical records may be destroyed at the Client's request if returning such documents or data containing confidential information is not possible.</p>
+        
 
     <h3>VIII. Indemnification</h3>
     <p>
@@ -221,6 +326,10 @@
         shall affect or modify the terms herein unless expressly stated in this Agreement.
     </p>
 
+        <!-- END_SECTION: Section_5_14 -->
+
+        <!-- SECTION: {"key": "Section_15_16", "order": 7, "type": "legal", "hasVariables": true} -->
+
     <h3>XV. Governing Law</h3>
     <p>This Agreement shall be governed by and interpreted in accordance with the federal laws and the laws of the State
         of <span class="input-field">{{contract.governing_law}}</span>.</p>
@@ -238,80 +347,12 @@
             <p>Date: <span class="input-field">{{client.signature_date}}</span></p>
             <p>Signature: _____________________</p>
         </div>
+        <!-- END_SECTION: Section_15_16 -->
+
+        <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
+
     </div>
 </body>
-<script>
-    let inputs = {
-        contract: {
-            name: "Independent Contractor Agreement",
-            date: {
-                day: "",
-                month: "",
-                year: ""
-            },
-            governing_law: ""
-        },
-        contractor: {
-            name: "",
-            address: {
-                street: "",
-                street_line_2: "",
-                city: "",
-                state: "",
-                postal: "",
-                country: ""
-            },
-            phone: "",
-            email: "",
-            signature_date: ""
-        },
-        client: {
-            name: "",
-            address: {
-                street: "",
-                street_line_2: "",
-                city: "",
-                state: "",
-                postal: "",
-                country: ""
-            },
-            phone: "",
-            email: "",
-            signature_date: ""
-        },
-        subject: "",
-        scope_of_work: "",
-        term: {
-            duration: "",
-            start_date: "",
-            end_date: ""
-        },
-        payment: {
-            total_amount: "",
-            schedule: {
-                initial_payment: {
-                    date: "",
-                    amount: ""
-                },
-                first_payment: {
-                    date: "",
-                    amount: ""
-                },
-                second_payment: {
-                    date: "",
-                    amount: ""
-                },
-                final_payment: {
-                    date: "",
-                    amount: ""
-                }
-            },
-            late_payment_interest: ""
-        },
-        termination: {
-            notice_period_days: ""
-        }
-    };
-</script>
 
 </html>
+<!-- END_SECTION: bodyEnd -->
