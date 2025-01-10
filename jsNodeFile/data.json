@@ -1,0 +1,47 @@
+{
+    "Supply Agreement": {
+        "company": {
+            "name": "Tech Innovators Inc.",
+            "street": "123 Innovation Drive",
+            "city": "Tech City",
+            "state": "California",
+            "postalCode": "90001",
+            "country": "USA"
+        },
+        "supplier": {
+            "name": "Global Supplies Ltd.",
+            "street": "456 Supply Lane",
+            "city": "Supply Town",
+            "state": "New York",
+            "postalCode": "10001",
+            "country": "USA",
+            "date": "2025-01-10"
+        },
+        "products": [
+            { "name": "Laptop", "description": "High-performance laptop", "price": "1200" },
+            { "name": "Monitor", "description": "27-inch 4K monitor", "price": "600" },
+            { "name": "Mouse", "description": "Wireless ergonomic mouse", "price": "30" },
+            { "name": "Keyboard", "description": "Mechanical gaming keyboard", "price": "80" }
+        ],
+        "deliveryDays": "30",
+        "terminationNoticeDays": "60",
+        "remedyPeriodDays": "15",
+        "paymentTermDays": "30",
+        "interestRate": "5",
+        "warrantyPeriod": "12",
+        "governingState": "California",
+        "supplierSignature": {
+            "signature": "John Doe",
+            "firstName": "John",
+            "lastName": "Doe",
+            "date": "2025-01-10"
+        },
+        "companySignature": {
+            "signature": "Jane Smith",
+            "firstName": "Jane",
+            "lastName": "Smith",
+            "date": "2025-01-10"
+        }
+    }
+    
+}
