@@ -1,10 +1,9 @@
-<!-- SECTION: {"key": "documentStart", "order": 1, "type": "structure", "hasVariables": false} -->
+<!-- SECTION: {"key":"documentStart","order":1,"type":"structure","hasVariables":false} -->
 <!DOCTYPE html>
 <html lang="en">
 <!-- END_SECTION: documentStart -->
 
-<!-- SECTION: {"key": "documentHead", "order": 2, "type": "metadata", "hasVariables": false} -->
-
+<!-- SECTION: {"key":"documentHead","order":2,"type":"metadata","hasVariables":false} -->
 <head>
     <meta charset="UTF-8">
     <title>Supply Agreement</title>
@@ -106,20 +105,17 @@
 </head>
 <!-- END_SECTION: documentHead -->
 
-
-
-<!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
+<!-- SECTION: {"key":"bodyStart","order":3,"type":"structure","hasVariables":false} -->
 <body>
     <div class="pdf-container">
-        <!-- END_SECTION: bodyStart -->
+<!-- END_SECTION: bodyStart -->
 
-        <!-- SECTION: {"key": "agreementTitle", "order": 4, "type": "content", "hasVariables": false} -->
-        <h1>Supply Agreement</h1>
-        <!-- END_SECTION: agreementTitle -->
+<!-- SECTION: {"key":"agreementTitle","order":4,"type":"content","hasVariables":false} -->
+<h1>Supply Agreement</h1>
+<!-- END_SECTION: agreementTitle -->
 
-        
-        <!-- SECTION: {"key": "partiesSection_1", "order": 5, "type": "legal", "hasVariables": true} -->
-        <h2>I. Agreement Parties</h2>
+<!-- SECTION: {"key":"partiesSection_1","order":5,"type":"legal","hasVariables":true} -->
+<h2>I. Agreement Parties</h2>
         <p>
             This Supply Agreement (the "Agreement") is executed by and between {{company.name}} with registered office
             at {{company.street}}, {{company.city}}, {{company.state}} {{company.postalCode}}, {{company.country}}
@@ -134,10 +130,10 @@
             NOW, THEREFORE, in exchange for the mutual promises and obligations detailed herein, the Company and the
             Supplier (each a "Party" and together, the "Parties") hereby agree as follows:
         </p>
-        <!-- END_SECTION: partiesSection_1 -->
+<!-- END_SECTION: partiesSection_1 -->
 
-        <!-- SECTION: {"key": "partiesSection_2_6", "order": 6, "type": "legal", "hasVariables": true} -->
-        <h2>II. Supply of Goods</h2>
+<!-- SECTION: {"key":"partiesSection_2_6","order":6,"type":"legal","hasVariables":true} -->
+<h2>II. Supply of Goods</h2>
         <p>The Supplier agrees to provide the following items (hereinafter referred to as the "Products"):</p>
 
         <table>
@@ -214,11 +210,10 @@
             by the Company must be replaced or repaired within {{warrantyPeriod}} at no cost, or the Company will be
             reimbursed.
         </p>
-        <!-- END_SECTION: partiesSection_2_6 -->
+<!-- END_SECTION: partiesSection_2_6 -->
 
-
-        <!-- SECTION: {"key": "partiesSection", "order": 7, "type": "legal", "hasVariables": true} -->
-        <h2>VII. Force Majeure</h2>
+<!-- SECTION: {"key":"partiesSection","order":7,"type":"legal","hasVariables":true} -->
+<h2>VII. Force Majeure</h2>
         <p>
             The Supplier is exempt from liability for delays due to force majeure events including earthquakes, floods,
             war, or severe weather preventing delivery. The Supplier must promptly notify the Company in writing of such
@@ -241,12 +236,10 @@
         <p>
             <strong>NON-WAIVER:</strong> Failure to enforce any provision does not constitute waiver of rights.
         </p>
+<!-- END_SECTION: partiesSection -->
 
-        <!-- END_SECTION: partiesSection -->
-
-
-        <!-- SECTION: {"key": "partiesSection_8", "order": 8, "type": "legal", "hasVariables": true} -->
-        <p>
+<!-- SECTION: {"key":"partiesSection_8","order":8,"type":"legal","hasVariables":true} -->
+<p>
             <strong>GOVERNING LAW:</strong> This Agreement is governed by the laws of {{governingState}}.
         </p>
 
@@ -256,24 +249,24 @@
             <tr>
                 <td style="width: 50%; padding: 10px; border: none;">
                     <strong>The Supplier:</strong><br><br>
-                    Signature: <span style="color: #f5f5f5;"> /sn1/ </span><br><br><br>
-                    Name: {{supplierSignature.firstName}} {{supplierSignature.lastName}}<br><br>
+                    Signature: {{supplierSignature.signature}}<br>
+                    Name: {{supplierSignature.firstName}} {{supplierSignature.lastName}}<br>
                     Date: {{supplierSignature.date}}
                 </td>
                 <td style="width: 50%; padding: 10px; border: none;">
                     <strong>The Company:</strong><br><br>
-                    Signature: <span style="color: #f5f5f5;"> /sn2/ </span><br><br><br>
-                    Name: {{companySignature.firstName}} {{companySignature.lastName}}<br><br>
+                    Signature: {{companySignature.signature}}<br>
+                    Name: {{companySignature.firstName}} {{companySignature.lastName}}<br>
                     Date: {{companySignature.date}}
                 </td>
             </tr>
         </table>
+<!-- END_SECTION: partiesSection_8 -->
 
-        <!-- END_SECTION: partiesSection_8 -->
-
-        <!-- SECTION: {"key": "bodyEnd", "order": 99, "type": "structure", "hasVariables": false} -->
-    </div>
+<!-- SECTION: {"key":"bodyEnd","order":99,"type":"structure","hasVariables":false} -->
+</div>
 </body>
 
 </html>
 <!-- END_SECTION: bodyEnd -->
+
