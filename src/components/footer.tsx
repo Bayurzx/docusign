@@ -42,7 +42,7 @@ export function Footer() {
           <div className="flex justify-center items-center">
             <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-black dark:border-white shadow-lg transform hover:rotate-3 transition-transform duration-300">
               <Image
-                src="/placeholder.svg?height=192&width=192"
+                src="/placeholder2.svg?height=192&width=192"
                 alt="Decorative image"
                 layout="fill"
                 objectFit="cover"
@@ -54,7 +54,7 @@ export function Footer() {
           <div className="flex flex-col justify-center">
             <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
             <p>
-              At DocaPrise, we're passionate about simplifying documentation processes. 
+              At DocaPrise, we&apos;re passionate about simplifying documentation processes. 
               Our innovative platform combines ease of use with powerful features, 
               ensuring your projects are always well-documented and accessible.
             </p>

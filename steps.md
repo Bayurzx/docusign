@@ -88,6 +88,29 @@ Markdown as an intermediate format. Markdown allows you to write content that ca
 # Thursday, January 9, 2025 12:18:49 PM
 ### 
 -  Started work on how to run the algorithm for this process and return back your LLM edited html string
+-  
+
+# Wednesday, January 22, 2025 10:46:21 PM
+- Value for req.session
+
+```log
+Session {
+  cookie: {
+    path: '/',
+    _expires: 2025-01-23T20:50:57.409Z,
+    originalMaxAge: 86400000,
+    httpOnly: true,
+    secure: false
+  },
+  auth: {
+    accountId: 'ca9a3a4e-999b-46c8-80fd-98fa8317c198',
+    accountName: 'IGLUM Nig. Ltd.',
+    basePath: 'https://demo.docusign.net/restapi',
+    accessToken: 'eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQoAAAABAAUABwCAe4R5JjvdSAgAgONI2y473UgCABdYBZKC7elMgfMs9W2JnYwVAAEAAAAYAAIAAAAFAAAAHQAAAA0AJAAAADYwYTAxYTc3LTRhOTUtNDM0MS1hNDYyLWQ3ZGE0ZWRlMjU4ZCIAJAAAADYwYTAxYTc3LTRhOTUtNDM0MS1hNDYyLWQ3ZGE0ZWRlMjU4ZBIAAQAAAAYAAABqd3RfYnIjACQAAAA2MGEwMWE3Ny00YTk1LTQzNDEtYTQ2Mi1kN2RhNGVkZTI1OGQ.KzgjhJcsQ_5f7iGVOBgtfnOBKvreNICLPmJnaZw-MSi4WOjw9eLzxujthWXLxGn50S5l35xNdAgv5dMI57zCjgORp9_Isfk5jTd6dgu5qtN64pzvNVVBYkVcFV2FsZGiJ_c1bjyedm9YOZAXdZp7-hCjukHS9WWPjKcGIzw7vtN5iJyaXlpIV0Bci3v77IwxAcN3Efb75AbIORW_JBSTQPuur9narBA9dejWQKaLbsaK4YDa7WbRD2oWaleKHJAjxnYKlVHVL-uXvI6nTvOC5WnMhZPB457XrO9A_8bp-1mTkBXbX1JfCVBqhg4RMR4s5dD_14zu-aCzPGTQse85rA',
+    tokenExpirationTimestamp: Moment<2025-01-22T22:41:00+01:00>
+  }
+}
+```
 
 ### Bonus
 - Was able to create clones like whatsapp etc.
