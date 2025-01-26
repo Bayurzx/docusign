@@ -71,7 +71,8 @@
         name: "Consulting Agreement",
         current_date: new Date().toLocaleDateString(),
         date: "2021-01-01",
-        start_date: "2021-01-01"
+        start_date: "2021-01-01",
+        services: ["Strategic Planning", "Market Analysis", "Process Optimization"],
       },
 
       // Legal and Financial Terms
@@ -102,9 +103,6 @@
         },
         state: "NY",
         country: "USA",
-        signature_code: "987654",
-        contract_type: "Professional Services Contract",
-        services: "Strategic Planning, Market Analysis, and Process Optimization",
         geographical_area: "New York"
       },
 
@@ -122,10 +120,6 @@
         },
         state: "CA",
         country: "USA",
-        signature_code: "123456",
-        contract_type: "Confidentiality Agreement",
-        services: "Business Development, Training, and Support",
-        geographical_area: "California"
       }
     };
 
@@ -174,13 +168,13 @@
       </p>
       <ul style="list-style-type: disc; width: 100%; padding-left: 20px; margin: 0;">
         <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-          {{consultant.services[0]}}
+          {{contract.services[0]}}
         </li>
         <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-          {{consultant.services[1]}}
+          {{contract.services[1]}}
         </li>
         <li class="spacer" style="display: block; width: 90%; margin-bottom: 8px;">
-          {{consultant.services[2]}}
+          {{contract.services[2]}}
         </li>
       </ul>
     </div>

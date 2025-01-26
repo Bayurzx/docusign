@@ -57,32 +57,33 @@
 
     <script>
         const inputs = {
-            date: "",
+            date: new Date().toLocaleDateString(),
             releasor: {
-                firstName: "",
-                lastName: "",
-                streetAddress: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                signature: "",
-                signatureDate: ""
+                firstName: "John",
+                lastName: "Doe",
+                streetAddress: "1234 Maple Street",
+                city: "Greenwood",
+                state: "Indiana",
+                postalCode: "46142",
+                country: "USA",
+                signature: "John Doe",
+                signatureDate: "2025-01-26"
             },
             releasee: {
-                firstName: "",
-                lastName: "",
-                streetAddress: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                signature: "",
-                signatureDate: ""
+                firstName: "Jane",
+                lastName: "Smith",
+                streetAddress: "5678 Pine Avenue",
+                city: "Lakeside",
+                state: "Michigan",
+                postalCode: "48324",
+                country: "USA",
+                signature: "Jane Smith",
+                signatureDate: "2025-01-26"
             },
-            amount: "",
-            stateName: "",
-            witnessDate: ""
+            amount: "15000",
+            stateName: "Indiana",
+            witnessDate: "2025-01-26",
+            contractName: "Release of Liability Agreement"
         };
     </script>
 </head>

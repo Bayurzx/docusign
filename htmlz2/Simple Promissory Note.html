@@ -43,58 +43,46 @@
 
     <script>
         const inputs = {
-            date: "",
-            state: "",
+            date: new Date().toLocaleDateString(),
+            contractName: "Promissory Note Agreement",
+            jurisdiction_state: "California",
             borrower: {
-                firstName: "",
-                lastName: "",
-                streetAddress: "",
-                streetAddressLine2: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                phoneNumber: "",
-                email: ""
+                firstName: "John",
+                lastName: "Doe",
+                streetAddress: "1234 Elm Street",
+                streetAddressLine2: "Apt 101",
+                city: "Los Angeles",
+                state: "California",
+                postalCode: "90001",
+                country: "USA",
+                phoneNumber: "+1-555-1234",
+                email: "johndoe@example.com",
+                date: "2025-01-26"
             },
             lender: {
-                firstName: "",
-                lastName: "",
-                streetAddress: "",
-                streetAddressLine2: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                phoneNumber: "",
-                email: ""
+                firstName: "Jane",
+                lastName: "Smith",
+                streetAddress: "5678 Oak Avenue",
+                streetAddressLine2: "Suite 202",
+                city: "San Francisco",
+                state: "California",
+                postalCode: "94105",
+                country: "USA",
+                phoneNumber: "+1-555-5678",
+                email: "janesmith@example.com",
+                date: "2025-01-26"
             },
-            principalSum: "",
-            principalSumInWriting: "",
-            interestRate: "",
-            interestRateInNumber: "",
+            principalSum: "5000",
+            principalSumInWriting: "Five thousand dollars",
+            interestRate: "5%",
+            interestRateInNumber: "5",
             paymentDue: {
-                day: "",
-                month: "",
-                year: ""
-            },
-            borrowerSignature: {
-                name: {
-                    firstName: "",
-                    lastName: ""
-                },
-                date: "",
-                signature: ""
-            },
-            lenderSignature: {
-                name: {
-                    firstName: "",
-                    lastName: ""
-                },
-                date: "",
-                signature: ""
+                day: "15",
+                month: "02",
+                year: "2025"
             }
         };
+
     </script>
 </head>
 <!-- END_SECTION: documentHead -->
@@ -115,7 +103,7 @@
 
     <!-- SECTION: {"key": "Section_1", "order": 5, "type": "legal", "hasVariables": true} -->
 
-    <p>This Promissory Note agreement is executed on {{date}} in the State of {{state}}.</p>
+    <p>This Promissory Note agreement is executed on {{date}} in the State of {{jurisdiction_state}}.</p>
 
     <table>
         <tr>
@@ -195,23 +183,23 @@
     <!-- SECTION: {"key": "Section_3", "order": 7, "type": "legal", "hasVariables": true} -->
 
     <h3>Jurisdiction:</h3>
-    <p>This Note shall be interpreted and enforced according to the laws of the State of {{state}}.</p>
+    <p>This Note shall be interpreted and enforced according to the laws of the State of {{jurisdiction_state}}.</p>
 
     <table style="margin-top: 50px;">
         <tr>
             <td style="width: 50%; border: none;">
                 <p><strong>BORROWER:</strong></p>
-                <p>Name: {{borrowerSignature.name.firstName}} {{borrowerSignature.name.lastName}}</p>
-                <p>Date: {{borrowerSignature.date}}</p> <br>
-                {{borrowerSignature.signature}}
+                <p>Name: {{borrower.firstName}} {{borrower.lastName}}</p>
+                <p>Date: {{borrower.date}}</p> <br>
+                /sn1/
                 <div class="signature-line"></div>
                 <p>Signature</p>
             </td>
             <td style="width: 50%; border: none;">
                 <p><strong>LENDER:</strong></p>
-                <p>Name: {{lenderSignature.name.firstName}} {{lenderSignature.name.lastName}}</p>
-                <p>Date: {{lenderSignature.date}}</p> <br>
-                {{lenderSignature.signature}}
+                <p>Name: {{lender.firstName}} {{lender.lastName}}</p>
+                <p>Date: {{lender.date}}</p> <br>
+                /sn2/
                 <div class="signature-line"></div>
                 <p>Signature</p>
             </td>

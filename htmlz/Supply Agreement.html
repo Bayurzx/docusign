@@ -59,47 +59,48 @@
     </style>
     <script>
         const inputs = {
+            contractName: 'Supply Agreement',
             company: {
-                name: '',
-                street: '',
-                city: '',
-                state: '',
-                postalCode: '',
-                country: ''
+                name: 'Global Tech Solutions',
+                street: '789 Tech Park Blvd.',
+                city: 'Innovation City',
+                state: 'CA',
+                postalCode: '94016',
+                country: 'USA'
             },
             supplier: {
-                name: '',
-                street: '',
-                city: '',
-                state: '',
-                postalCode: '',
-                country: '',
-                date: ''
+                name: 'Superior Supplies Ltd.',
+                street: '456 Supply Rd.',
+                city: 'Commerce Town',
+                state: 'NY',
+                postalCode: '10022',
+                country: 'USA',
+                date: '2025-01-25'
             },
             products: [
-                { name: '', description: '', price: '' },
-                { name: '', description: '', price: '' },
-                { name: '', description: '', price: '' },
-                { name: '', description: '', price: '' }
+                { name: 'Laptop', description: '14-inch high-performance laptop', price: '1200' },
+                { name: 'Mouse', description: 'Wireless ergonomic mouse', price: '50' },
+                { name: 'Keyboard', description: 'Mechanical keyboard with backlighting', price: '100' },
+                { name: 'Monitor', description: '27-inch 4K display', price: '350' }
             ],
-            deliveryDays: '',
-            terminationNoticeDays: '',
-            remedyPeriodDays: '',
-            paymentTermDays: '',
-            interestRate: '',
-            warrantyPeriod: '',
-            governingState: '',
+            deliveryDays: '30',
+            terminationNoticeDays: '60',
+            remedyPeriodDays: '30',
+            paymentTermDays: '45',
+            interestRate: '5%',
+            warrantyPeriod: '12 months',
+            governingState: 'California',
             supplierSignature: {
-                signature: '',
-                firstName: '',
-                lastName: '',
-                date: ''
+                signature: 'John Doe',
+                firstName: 'John',
+                lastName: 'Doe',
+                date: '2025-01-25'
             },
             companySignature: {
-                signature: '',
-                firstName: '',
-                lastName: '',
-                date: ''
+                signature: 'Jane Smith',
+                firstName: 'Jane',
+                lastName: 'Smith',
+                date: '2025-01-25'
             }
         };
     </script>
@@ -109,6 +110,7 @@
 
 
 <!-- SECTION: {"key": "bodyStart", "order": 3, "type": "structure", "hasVariables": false} -->
+
 <body>
     <div class="pdf-container">
         <!-- END_SECTION: bodyStart -->
@@ -117,7 +119,7 @@
         <h1>Supply Agreement</h1>
         <!-- END_SECTION: agreementTitle -->
 
-        
+
         <!-- SECTION: {"key": "partiesSection_1", "order": 5, "type": "legal", "hasVariables": true} -->
         <h2>I. Agreement Parties</h2>
         <p>

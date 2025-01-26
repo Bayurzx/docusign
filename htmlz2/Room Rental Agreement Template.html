@@ -14,49 +14,48 @@
     <script>
         const inputs = {
             houseowner: {
-                firstName: '',
-                lastName: ''
+                firstName: "John",
+                lastName: "Doe"
             },
             renter: {
-                firstName: '',
-                lastName: ''
+                firstName: "Jane",
+                lastName: "Smith"
             },
             address: {
-                streetAddress: '',
-                streetAddressLine2: '',
-                city: '',
-                stateProvince: '',
-                postalCode: '',
-                country: ''
+                streetAddress: "1234 Oak Street",
+                streetAddressLine2: "Apt 101",
+                city: "Sunnyvale",
+                stateProvince: "California",
+                postalCode: "94086",
+                country: "USA"
             },
             terms: {
-                startDate: '',
-                noticePeriod: '',
-                rent: '',
-                paymentMethod: '',
-                paymentDay: ''
+                startDate: "2025-02-01",
+                noticePeriod: "30 days",
+                rent: "1500",
+                paymentMethod: "Bank Transfer",
+                paymentDay: "1st of each month"
             },
             utilities: {
-                gasElectricity: '',
-                water: '',
-                garbage: '',
-                internet: '',
-                cableTV: '',
-                otherLiability: ''
+                gasElectricity: 70,
+                water: 100,
+                garbage: 100,
+                internet: 100,
+                cableTV: 100,
+                otherLiability: 0
             },
             fixtures: {
-                list: ['', '', '', '', ''],
-                depositAmount: ''
+                list: ["Refrigerator", "Dishwasher", "Washer", "Dryer", "Microwave"],
+                depositAmount: "3000"
             },
             governingLaw: {
-                state: ''
+                state: "California"
             },
             signatures: {
-                renterDate: '',
-                renterSignature: '',
-                houseownerDate: '',
-                houseownerSignature: ''
-            }
+                renterDate: new Date().toLocaleDateString(),
+                houseownerDate: new Date().toLocaleDateString(),
+            },
+            contractName: "Room Rental Agreement"
         };
     </script>
 
@@ -272,12 +271,12 @@
             <tr>
                 <td>
                     <p>Tenant Signature:</p>
-                    <div class="signature-box">{{signatures.renterSignature}}</div>
+                    <div class="signature-box"><span style="color:#f5f5f5"> /sn1/ </span></div>
                     <p>Date: {{signatures.renterDate}}</p>
                 </td>
                 <td>
                     <p>Property Owner Signature:</p>
-                    <div class="signature-box">{{signatures.houseownerSignature}}</div>
+                    <div class="signature-box"><span style="color:#f5f5f5"> /sn2/ </span></div>
                     <p>Date: {{signatures.houseownerDate}}</p>
                 </td>
             </tr>

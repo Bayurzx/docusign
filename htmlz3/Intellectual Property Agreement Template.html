@@ -45,42 +45,41 @@
     <script>
         const inputs = {
             company: {
-                name: "",
-                streetAddress: "",
-                streetAddressLine2: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                phoneNumber: "",
-                email: "",
-                revenueShare: "", // Added for revenue sharing percentage,
-                date: "",
-                signature: ""
-
+                name: "ABC Corp",
+                streetAddress: "123 Business Blvd",
+                streetAddressLine2: "Suite 456",
+                city: "New York",
+                state: "NY",
+                postalCode: "10001",
+                country: "USA",
+                phoneNumber: "+1-555-1234",
+                email: "contact@abccorp.com",
+                revenueShare: "50%",
+                date: new Date().toLocaleDateString(),
+                signature: "John Doe"
             },
             owner: {
-                firstName: "",
-                lastName: "",
-                streetAddress: "",
-                streetAddressLine2: "",
-                city: "",
-                state: "",
-                postalCode: "",
-                country: "",
-                phoneNumber: "",
-                email: "",
-                revenueShare: "", // Added for revenue sharing percentage
-                date: "",
-                signature: ""
-
+                firstName: "Jane",
+                lastName: "Smith",
+                streetAddress: "456 Owner St",
+                streetAddressLine2: "Apt 789",
+                city: "New York",
+                state: "NY",
+                postalCode: "10001",
+                country: "USA",
+                phoneNumber: "+1-555-9876",
+                email: "jane.smith@email.com",
+                revenueShare: "50%",
+                date: new Date().toLocaleDateString(),
+                signature: "Jane Smith",
+                position: "CEO",
             },
-            position: "", // Owner's position in company
-            projectName: "", // Name of the project
+            contractName: "Intellectual Property Agreement",
+            projectName: "Project X",
             legal: {
-                governingState: "", // State whose laws govern the agreement
-                arbitrationBody: "", // Name of arbitration organization
-                arbitrationLocation: "" // Location where arbitration will take place
+                governingState: "New York",
+                arbitrationBody: "American Arbitration Association",
+                arbitrationLocation: "New York, NY"
             }
         };
     </script>
@@ -203,7 +202,7 @@
     <p>The Company and the Owner shall be individually referred to as "Party" and collectively referred to as the
         "Parties".</p>
 
-    <p>WHEREAS, the Owner is the employee of the Company in the position of {{position}};</p>
+    <p>WHEREAS, the Owner is the employee of the Company in the position of {{owner.position}};</p>
 
     <p>WHEREAS, the Owner agrees and undertakes to transfer intellectual property rights and related interests of its
         original work, designs and other work created during the Owner's employment to the Company under the term and

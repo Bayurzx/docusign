@@ -80,72 +80,72 @@
             contract: {
                 name: "Independent Contractor Agreement",
                 date: {
-                    day: "",
-                    month: "",
-                    year: ""
+                    day: new Date().getDate(),
+                    month: new Date().toLocaleString('default', { month: 'long' }),
+                    year: new Date().getFullYear()
                 },
-                governing_law: ""
+                governing_law: "California"
             },
             contractor: {
-                name: "",
+                name: "John Doe",
                 address: {
-                    street: "",
-                    street_line_2: "",
-                    city: "",
-                    state: "",
-                    postal: "",
-                    country: ""
+                    street: "123 Main St",
+                    street_line_2: "Suite 100",
+                    city: "Los Angeles",
+                    state: "CA",
+                    postal: "90001",
+                    country: "USA"
                 },
-                phone: "",
-                email: "",
-                signature_date: ""
+                phone: "(555) 123-4567",
+                email: "johndoe@email.com",
+                signature_date: new Date().toLocaleDateString()
             },
             client: {
-                name: "",
+                name: "Jane Smith",
                 address: {
-                    street: "",
-                    street_line_2: "",
-                    city: "",
-                    state: "",
-                    postal: "",
-                    country: ""
+                    street: "456 Elm St",
+                    street_line_2: "Apt 202",
+                    city: "San Francisco",
+                    state: "CA",
+                    postal: "94102",
+                    country: "USA"
                 },
-                phone: "",
-                email: "",
-                signature_date: ""
+                phone: "(555) 987-6543",
+                email: "janesmith@email.com",
+                signature_date: new Date().toLocaleDateString()
             },
-            subject: "",
-            scope_of_work: "",
+            subject: "Provision of IT consulting services",
+            scope_of_work: "Development and maintenance of custom software solutions",
             term: {
-                duration: "",
-                start_date: "",
-                end_date: ""
-            },
-            payment: {
-                total_amount: "",
-                schedule: {
-                    initial_payment: {
-                        date: "",
-                        amount: ""
-                    },
-                    first_payment: {
-                        date: "",
-                        amount: ""
-                    },
-                    second_payment: {
-                        date: "",
-                        amount: ""
-                    },
-                    final_payment: {
-                        date: "",
-                        amount: ""
-                    }
-                },
-                late_payment_interest: ""
+                duration: "12 months",
+                start_date: "02/01/2025",
+                end_date: "01/31/2026"
             },
             termination: {
-                notice_period_days: ""
-            }
+                notice_period_days: 30
+            },
+            payment: {
+                total_amount: "$100,000",
+                schedule: {
+                    initial_payment: {
+                        date: "02/01/2025",
+                        amount: "$25,000"
+                    },
+                    first_payment: {
+                        date: "05/01/2025",
+                        amount: "$25,000"
+                    },
+                    second_payment: {
+                        date: "08/01/2025",
+                        amount: "$25,000"
+                    },
+                    final_payment: {
+                        date: "11/01/2025",
+                        amount: "$25,000"
+                    }
+                },
+                late_payment_interest: "5"
+            },
         };
     </script>
 </head>
@@ -208,7 +208,7 @@
     <p>NOW, THEREFORE, in consideration of the mutual promises, covenants, and conditions set forth herein, Client and
         Contractor (individually referred to as "Party" and collectively as "Parties") hereby agree as follows:</p>
 
-        
+
     <h3>I. Scope of Work</h3>
     <p>The specific services to be performed by the Contractor are detailed as follows:</p>
     <div class="input-field" style="min-height: 100px;">{{scope_of_work}}</div>
@@ -260,18 +260,32 @@
         Party. Upon termination, Client shall compensate Contractor for all services rendered through the effective date
         of termination.</p>
 
-        <!-- END_SECTION: Section_0_4 -->
-         
-        <!-- SECTION: {"key": "Section_5_14", "order": 6, "type": "legal", "hasVariables": false} -->
-        <h3>V. Intellectual Property</h3>
-        <p>Intellectual Property refers to any intangible creations of the mind, such as artistic or literary works, designs, images, names (including trade names), trademarks, logos, symbols, patents, copyrights, designs, architecture, concepts, and other items used in commerce. As outlined in this Agreement, the Client's use of the Intellectual Property will not be restricted in any way. Any Intellectual Property acquired by the Contractor during the term of this Agreement shall only be used for the purposes of fulfilling this Agreement. In the event that an intellectual creation is developed by the Contractor during the term of this Agreement, the Parties agree that the intellectual property rights for such creations shall belong to the Client, specifically for the purposes of this Agreement.</p>
-        
-        <h3>VI. No Employer-Employee Relationship</h3>
-        <p>The Parties acknowledge that this Agreement does not create an employer-employee relationship. Both Parties are independent contractors, and this Agreement does not form a partnership or joint venture but is solely a contract for service. The Client is not responsible for paying or contributing to the Contractor's social security, taxes, unemployment, workers' compensation, insurance premiums, or any other benefits provided to the Client’s employees.</p>
-        
-        <h3>VII. Return of Client's Property</h3>
-        <p>In the event that this Agreement is terminated or upon the Client's request, the Contractor agrees to return any and all property owned by the Client. Any digital or electronic data may be deleted upon the Client’s request, or physical records may be destroyed at the Client's request if returning such documents or data containing confidential information is not possible.</p>
-        
+    <!-- END_SECTION: Section_0_4 -->
+
+    <!-- SECTION: {"key": "Section_5_14", "order": 6, "type": "legal", "hasVariables": false} -->
+    <h3>V. Intellectual Property</h3>
+    <p>Intellectual Property refers to any intangible creations of the mind, such as artistic or literary works,
+        designs, images, names (including trade names), trademarks, logos, symbols, patents, copyrights, designs,
+        architecture, concepts, and other items used in commerce. As outlined in this Agreement, the Client's use of the
+        Intellectual Property will not be restricted in any way. Any Intellectual Property acquired by the Contractor
+        during the term of this Agreement shall only be used for the purposes of fulfilling this Agreement. In the event
+        that an intellectual creation is developed by the Contractor during the term of this Agreement, the Parties
+        agree that the intellectual property rights for such creations shall belong to the Client, specifically for the
+        purposes of this Agreement.</p>
+
+    <h3>VI. No Employer-Employee Relationship</h3>
+    <p>The Parties acknowledge that this Agreement does not create an employer-employee relationship. Both Parties are
+        independent contractors, and this Agreement does not form a partnership or joint venture but is solely a
+        contract for service. The Client is not responsible for paying or contributing to the Contractor's social
+        security, taxes, unemployment, workers' compensation, insurance premiums, or any other benefits provided to the
+        Client’s employees.</p>
+
+    <h3>VII. Return of Client's Property</h3>
+    <p>In the event that this Agreement is terminated or upon the Client's request, the Contractor agrees to return any
+        and all property owned by the Client. Any digital or electronic data may be deleted upon the Client’s request,
+        or physical records may be destroyed at the Client's request if returning such documents or data containing
+        confidential information is not possible.</p>
+
 
     <h3>VIII. Indemnification</h3>
     <p>
@@ -326,9 +340,9 @@
         shall affect or modify the terms herein unless expressly stated in this Agreement.
     </p>
 
-        <!-- END_SECTION: Section_5_14 -->
+    <!-- END_SECTION: Section_5_14 -->
 
-        <!-- SECTION: {"key": "Section_15_16", "order": 7, "type": "legal", "hasVariables": true} -->
+    <!-- SECTION: {"key": "Section_15_16", "order": 7, "type": "legal", "hasVariables": true} -->
 
     <h3>XV. Governing Law</h3>
     <p>This Agreement shall be governed by and interpreted in accordance with the federal laws and the laws of the State

@@ -104,64 +104,65 @@
     <script>
         const inputs = {
             // Agreement Date and Parties
-            date: '',
+            date: new Date().toLocaleDateString(),
+            contractName: 'Subscription Agreement',
 
             // Company Information
             company: {
-                name: '',
-                streetAddress: '',
-                streetAddressLine2: '',
-                city: '',
-                state: '',
-                postalCode: '',
-                country: '',
-                email: '',
-                phoneNumber: ''
+                name: 'Acme Corp',
+                streetAddress: '123 Main St',
+                streetAddressLine2: 'Suite 456',
+                city: 'Anytown',
+                state: 'CA',
+                postalCode: '12345',
+                country: 'USA',
+                email: 'info@acmecorp.com',
+                phoneNumber: '555-1234'
             },
 
             // Investor Information
             investor: {
-                name: '',
-                streetAddress: '',
-                streetAddressLine2: '',
-                city: '',
-                state: '',
-                postalCode: '',
-                country: '',
-                email: '',
-                phoneNumber: ''
+                name: 'Jane Doe',
+                streetAddress: '456 Oak Rd',
+                streetAddressLine2: 'Apt 789',
+                city: 'Elsewhere',
+                state: 'NY',
+                postalCode: '67890',
+                country: 'USA',
+                email: 'jane.doe@email.com',
+                phoneNumber: '555-5678'
             },
 
             // Subscription Details
             subscription: {
-                numberOfShares: '',
-                purchasePrice: '',
-                paymentPeriod: '',
-                deliveryPeriod: ''
+                numberOfShares: '100',
+                purchasePrice: '10.00',
+                paymentPeriod: '30 days',
+                deliveryPeriod: '14 days'
             },
 
             // Closing Information
             closing: {
-                date: ''
+                date: '2023-06-01'
             },
 
             // Legal Information
             legal: {
-                stateCountry: '',
-                jurisdiction: ''
+                stateCountry: 'Delaware, USA',
+                jurisdiction: 'State of Delaware'
             },
 
             // Signature Details
             signatures: {
                 company: {
-                    name: '',
-                    date: '',
-                    signature: ''
+                    name: 'John Smith',
+                    date: '2023-05-01',
+                    signature: 'J. Smith'
                 },
                 investor: {
-                    name: '',
-                    date: '',
-                    signature: ''
+                    name: 'Jane Doe',
+                    date: '2023-05-01',
+                    signature: 'J. Doe'
                 }
             }
         };
