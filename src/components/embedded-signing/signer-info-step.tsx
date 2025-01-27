@@ -19,7 +19,7 @@ export function SignerInfoStep({ formData, updateFormData, onEnterPress }: Signe
     <Card className="shadow-lg p-8 transition-all duration-300 hover:scale-105 hover:shadow-xl border-l-4 border-gradient-to-r from-blue-500 to-purple-500 min-h-[300px]">
       <CardHeader>
         <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">Signer Information</CardTitle>
-        <CardDescription>Enter the signer&apos;s email and name</CardDescription>
+        <CardDescription>Enter the signer's email and name</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>

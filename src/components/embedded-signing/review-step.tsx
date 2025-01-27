@@ -12,7 +12,7 @@ export function ReviewStep({ formData }: ReviewStepProps) {
     <Card className="shadow-lg p-8 transition-all duration-300 hover:shadow-xl min-h-[300px]">
       <CardHeader>
         <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">Review Signer Information</CardTitle>
-        <CardDescription>Please review the signer&apos;s information before submitting</CardDescription>
+        <CardDescription>Please review the signer's information before submitting</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>

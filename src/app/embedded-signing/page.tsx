@@ -8,7 +8,7 @@ import { SignerInfoStep } from '@/components/embedded-signing/signer-info-step'
 import { ReviewStep } from '@/components/embedded-signing/review-step'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useToast } from "@/components/ui/use-toast"
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type FormData = {
   email: string
@@ -22,7 +22,7 @@ export default function EmbeddedSigning() {
     name: ''
   })
   const { toast } = useToast()
-  // const router = useRouter()
+  const router = useRouter()
 
   const steps = [SignerInfoStep, ReviewStep]
   const CurrentStep = steps[step]
