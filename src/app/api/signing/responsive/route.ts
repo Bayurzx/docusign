@@ -1,10 +1,25 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+type ErrorResponse = {
+  response?: {
+    status?: number;
+    body?: {
+      errorCode?: string;
+      message?: string;
+    };
+  };
+  isAuthenticationError?: boolean;
+  details?: {
+    reason?: string;
+  };
+  message?: string;
+};
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    const body = await request.json();
 
     const response = await fetch(`${BASE_URL}/signing/responsive`, {
       method: "POST",
@@ -12,9 +27,9 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
-    })
+    });
 
-    const results = await response.json()
+    const results = await response.json();
 
     if (response.ok) {
       return NextResponse.json(
@@ -24,38 +39,46 @@ export async function POST(request: Request) {
           redirectUrl: results.redirectUrl,
           message: "Envelope created and ready for signing",
         },
-        { status: 200 },
-      )
+        { status: 200 }
+      );
     } else {
-      throw new Error(results.message || "An error occurred during the responsive signing process")
-    }
-  } catch (error: any) {
-    console.error("Error in responsive signing:", error)
-
-    if (error.isAuthenticationError) {
+      console.error("Error in response:", results);
       return NextResponse.json(
         {
           success: false,
-          errorCode: error.details?.reason || "AUTHENTICATION_ERROR",
-          errorMessage: error.message,
-          details: error.details,
+          errorCode: results.errorCode || "RESPONSE_ERROR",
+          errorMessage: results.message || "An error occurred during the responsive signing process",
         },
-        { status: 401 },
-      )
+        { status: response.status }
+      );
+    }
+  } catch (error: unknown) {
+    const err = error as ErrorResponse;
+    console.error("Error in responsive signing:", err);
+
+    if (err.isAuthenticationError) {
+      return NextResponse.json(
+        {
+          success: false,
+          errorCode: err.details?.reason || "AUTHENTICATION_ERROR",
+          errorMessage: err.message || "Authentication error",
+          details: err.details,
+        },
+        { status: 401 }
+      );
     }
 
-    const status = error.response?.status || 500
-    const errorCode = error.response?.body?.errorCode || "UNKNOWN_ERROR"
-    const errorMessage = error.response?.body?.message || error.message
+    const status = err.response?.status || 500;
+    const errorCode = err.response?.body?.errorCode || "UNKNOWN_ERROR";
+    const errorMessage = err.response?.body?.message || err.message || "An unknown error occurred.";
 
     return NextResponse.json(
       {
         success: false,
-        errorCode: errorCode,
-        errorMessage: errorMessage,
+        errorCode,
+        errorMessage,
       },
-      { status: status },
-    )
+      { status }
+    );
   }
 }
-

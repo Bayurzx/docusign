@@ -112,5 +112,61 @@ Session {
 }
 ```
 
+## Supply Agreement
+- Updated handleSubmit(s) onClick for the three endpoints @ `src\components\supply-agreement\review-step.tsx:23,34`
+  - Also update the Button name.
+- Also update the `formData` in `src\app\supply-agreement\page.tsx:73,3` to speed up development process
+- Commented out `ContractStep` at page (import and const steps)
+- Added isLoading functionality
+  - disabled click when loading is true
+  - setIsLoading on the start of final submission and false when it's finally done
+- updating formData in finalSubmit to avoid missing input at backend
+  - contractName
+  - Added LoadingSpinner which shows when loading is true
+
+
+## Login and logout
+- Set up login with route
+  - modified:   src/app/api/docusign/auth/route.ts
+  - deleted:    src/app/api/docusign/index/route.ts
+  - modified:   src/app/api/docusign/logout/route.ts
+
+
+## Deploy to Azure
+az webapp up --name docu-be --resource-group docusign --plan ASP-docusign-9792 --sku B1 --location eastus
+
+az webapp show --name docu-be --resource-group docusign
+
+
+//group1
+confidentiality-agreement
+consulting-agreement
+copyright-assignment-agreement
+independent-contractor-agreement
+intellectual-property-agreement
+licensing-agreement
+non-disclosure-agreement
+promissory-note-agreement
+release-of-liability-agreement
+room-rental-agreement
+subscription-agreement
+supply-agreement
+
+// group2
+Confidentiality Agreement.html
+Consulting Agreement.html
+Copyright Assignment Agreement.html
+Independent Contractor Agreement.html
+Intellectual Property Agreement.html
+Licensing Agreement.html
+Non-Disclosure Agreement.html
+Promissory Note Agreement.html
+Release of Liability Agreement.html
+Room Rental Agreement.html
+Subscription Agreement.html
+Supply Agreement.html
+
+
+
 ### Bonus
 - Was able to create clones like whatsapp etc.

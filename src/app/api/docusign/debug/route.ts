@@ -4,21 +4,19 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
 export async function GET() {
   try {
-    const response = await fetch(`${BASE_URL}/docusign/auth`, {
+    const response = await fetch(`${BASE_URL}/docusign/debug`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     })
 
-    const authResult = await response.json()
+    const debugResult = await response.json()
 
     if (response.ok) {
       return NextResponse.json(
         {
-          message: "Authentication successful",
-          isAuthenticated: true,
-          ...authResult,
+          ...debugResult,
         },
         { status: 200 },
       )

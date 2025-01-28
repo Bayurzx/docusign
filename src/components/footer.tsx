@@ -27,7 +27,7 @@ export function Footer() {
               <span className="text-2xl font-bold">DocaPrise</span>
             </div>
             <p className="text-sm text-center md:text-left">
-              Empowering your documentation journey with cutting-edge solutions.
+            Resign from the old ways of document signing.
             </p>
             <div className="flex space-x-4 mt-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -42,7 +42,7 @@ export function Footer() {
           <div className="flex justify-center items-center">
             <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-black dark:border-white shadow-lg transform hover:rotate-3 transition-transform duration-300">
               <Image
-                src="/placeholder.svg?height=192&width=192"
+                src="/docImg.jpg"
                 alt="Decorative image"
                 layout="fill"
                 objectFit="cover"
@@ -54,9 +54,7 @@ export function Footer() {
           <div className="flex flex-col justify-center">
             <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
             <p>
-              At DocaPrise, we're passionate about simplifying documentation processes. 
-              Our innovative platform combines ease of use with powerful features, 
-              ensuring your projects are always well-documented and accessible.
+              Our mission is simple: to make creating, signing, and managing contracts as effortless as possible. We believe businesses shouldn’t waste time on repetitive tasks or worry about errors in their documents. With DocaPrise, we’re turning contracts into tools that work for you—easy to create, accurate to use, and ready to reuse. It’s not just about saving time; it’s about giving you peace of mind
             </p>
           </div>
         </div>

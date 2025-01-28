@@ -84,7 +84,7 @@ const cardData = [
   {
     title: "Subscription Agreement",
     description: "Create and manage subscription agreements for investors.",
-    imageUrl: "/placeholder.svg?height=200&width=300",
+    imageUrl: "/docImg12.jpg",
     link: "/subscription-agreement",
   },
   // {
