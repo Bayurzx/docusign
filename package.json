@@ -64,6 +64,9 @@
     "framer-motion": "latest",
     "react-confetti": "latest"
   },
+  "overrides": {
+    "date-fns": "^3.6.0"
+  },
   "devDependencies": {
     "@types/docusign-esign": "^5.19.7",
     "@types/node": "^20",
