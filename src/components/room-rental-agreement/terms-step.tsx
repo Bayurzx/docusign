@@ -33,7 +33,7 @@ export function TermsStep({ formData, updateFormData, onEnterPress }: TermsStepP
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="startDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="startDate" className="block text-sm font-medium text-gray-500 mb-1">
             Start Date
           </label>
           <Input
@@ -45,7 +45,7 @@ export function TermsStep({ formData, updateFormData, onEnterPress }: TermsStepP
           />
         </div>
         <div>
-          <label htmlFor="noticePeriod" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="noticePeriod" className="block text-sm font-medium text-gray-500 mb-1">
             Notice Period
           </label>
           <Input
@@ -58,7 +58,7 @@ export function TermsStep({ formData, updateFormData, onEnterPress }: TermsStepP
           />
         </div>
         <div>
-          <label htmlFor="rent" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="rent" className="block text-sm font-medium text-gray-500 mb-1">
             Rent Amount
           </label>
           <Input
@@ -71,7 +71,7 @@ export function TermsStep({ formData, updateFormData, onEnterPress }: TermsStepP
           />
         </div>
         <div>
-          <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Method
           </label>
           <Input
@@ -84,7 +84,7 @@ export function TermsStep({ formData, updateFormData, onEnterPress }: TermsStepP
           />
         </div>
         <div>
-          <label htmlFor="paymentDay" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentDay" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Day
           </label>
           <Input

@@ -11,60 +11,18 @@ import { ClientStep } from "@/components/consulting-agreement/client-step"
 import { ReviewStep } from "@/components/consulting-agreement/review-step"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import { FormDataConsultingAgreement, FormValueConsultingAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  contract: {
-    name: string
-    current_date: string
-    date: string
-    start_date: string
-    services: string[]
-  }
-  terms: {
-    jurisdiction: string
-    duration: string
-    payment_method: string
-    amount: string
-    late_fee: string
-    penalty: string
-    time_period: string
-  }
-  consultant: {
-    company_name: string
-    full_name: {
-      first_name: string
-      last_name: string
-    }
-    address: {
-      street: string
-      city: string
-      state: string
-      zip: string
-    }
-    state: string
-    country: string
-    geographical_area: string
-  }
-  client: {
-    company_name: string
-    full_name: {
-      first_name: string
-      last_name: string
-    }
-    address: {
-      street: string
-      city: string
-      state: string
-      zip: string
-    }
-    state: string
-    country: string
-  }
-}
+
 
 export default function ConsultingAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataConsultingAgreement>({
     contract: {
       name: "Consulting Agreement",
       current_date: new Date().toLocaleDateString(),
@@ -82,6 +40,7 @@ export default function ConsultingAgreement() {
       time_period: "",
     },
     consultant: {
+      email: "",
       company_name: "",
       full_name: {
         first_name: "",
@@ -98,6 +57,7 @@ export default function ConsultingAgreement() {
       geographical_area: "",
     },
     client: {
+      email: "",
       company_name: "",
       full_name: {
         first_name: "",
@@ -114,6 +74,8 @@ export default function ConsultingAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1);
 
   const steps = [ContractStep, TermsStep, ConsultantStep, ClientStep, ReviewStep]
   const CurrentStep = steps[step]
@@ -130,12 +92,19 @@ export default function ConsultingAgreement() {
     toast({
       title: "Confirm Submission",
       description: `Are you sure you want to submit this consulting agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.consultant.email
+      formData.signer1Name = `${formData.consultant.full_name.first_name} ${formData.consultant.full_name.last_name}`
+      formData.signer2Email = formData.client.email
+      formData.signer2Name = `${formData.client.full_name.first_name} ${formData.client.full_name.last_name}`
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -152,9 +121,13 @@ export default function ConsultingAgreement() {
       localStorage.setItem("consultingAgreementData", JSON.stringify(formData))
       toast({
         title: "Consulting Agreement Submitted",
-        description: `Your consulting agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your consulting agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -162,21 +135,31 @@ export default function ConsultingAgreement() {
         description: "Failed to submit the consulting agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueConsultingAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
+      const newData = { ...prev };
+      const keys = key.split('.');
+
+      let current: Record<string, unknown> = newData;
+
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataConsultingAgreement;
+    });
+  };
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("consultingAgreementData")
@@ -198,6 +181,7 @@ export default function ConsultingAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-end mb-4">
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>
       </div>

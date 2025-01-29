@@ -37,7 +37,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="investorName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorName" className="block text-sm font-medium text-gray-500 mb-1">
             Investor Name
           </label>
           <Input
@@ -50,7 +50,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -63,7 +63,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorStreetAddressLine2" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorStreetAddressLine2" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address Line 2
           </label>
           <Input
@@ -76,7 +76,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -89,7 +89,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -102,7 +102,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorPostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorPostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -115,7 +115,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -128,7 +128,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorEmail" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorEmail" className="block text-sm font-medium text-gray-500 mb-1">
             Email
           </label>
           <Input
@@ -141,7 +141,7 @@ export function InvestorStep({ formData, updateFormData, onEnterPress }: Investo
           />
         </div>
         <div>
-          <label htmlFor="investorPhoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="investorPhoneNumber" className="block text-sm font-medium text-gray-500 mb-1">
             Phone Number
           </label>
           <Input

@@ -7,7 +7,7 @@ interface ContractStepProps {
     amount: string
     stateName: string
     witnessDate: string
-    contractName: string
+    contractName?: string
   }
   updateFormData: (key: string, value: string) => void
   onEnterPress: () => void
@@ -31,7 +31,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="date" className="block text-sm font-medium text-gray-500 mb-1">
             Agreement Date
           </label>
           <Input
@@ -43,7 +43,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           />
         </div>
         <div>
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="amount" className="block text-sm font-medium text-gray-500 mb-1">
             Amount
           </label>
           <Input
@@ -56,7 +56,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           />
         </div>
         <div>
-          <label htmlFor="stateName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="stateName" className="block text-sm font-medium text-gray-500 mb-1">
             State Name
           </label>
           <Input
@@ -69,7 +69,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           />
         </div>
         <div>
-          <label htmlFor="witnessDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="witnessDate" className="block text-sm font-medium text-gray-500 mb-1">
             Witness Date
           </label>
           <Input
@@ -81,7 +81,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           />
         </div>
         <div>
-          <label htmlFor="contractName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="contractName" className="block text-sm font-medium text-gray-500 mb-1">
             Contract Name
           </label>
           <Input

@@ -34,7 +34,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="gasElectricity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="gasElectricity" className="block text-sm font-medium text-gray-500 mb-1">
             Gas & Electricity
           </label>
           <Input
@@ -47,7 +47,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
           />
         </div>
         <div>
-          <label htmlFor="water" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="water" className="block text-sm font-medium text-gray-500 mb-1">
             Water
           </label>
           <Input
@@ -60,7 +60,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
           />
         </div>
         <div>
-          <label htmlFor="garbage" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="garbage" className="block text-sm font-medium text-gray-500 mb-1">
             Garbage
           </label>
           <Input
@@ -73,7 +73,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
           />
         </div>
         <div>
-          <label htmlFor="internet" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="internet" className="block text-sm font-medium text-gray-500 mb-1">
             Internet
           </label>
           <Input
@@ -86,7 +86,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
           />
         </div>
         <div>
-          <label htmlFor="cableTV" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="cableTV" className="block text-sm font-medium text-gray-500 mb-1">
             Cable TV
           </label>
           <Input
@@ -99,7 +99,7 @@ export function UtilitiesStep({ formData, updateFormData, onEnterPress }: Utilit
           />
         </div>
         <div>
-          <label htmlFor="otherLiability" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="otherLiability" className="block text-sm font-medium text-gray-500 mb-1">
             Other Liability
           </label>
           <Input

@@ -4,8 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 interface ContractStepProps {
   formData: {
-    contractName: string
-    purposeOfTheWork: string
+    contractName?: string
+    purposeOfTheWork?: string
   }
   updateFormData: (key: string, value: string) => void
   onEnterPress: () => void
@@ -29,7 +29,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="contractName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="contractName" className="block text-sm font-medium text-gray-500 mb-1">
             Contract Name
           </label>
           <Input
@@ -42,7 +42,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           />
         </div>
         <div>
-          <label htmlFor="purposeOfTheWork" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="purposeOfTheWork" className="block text-sm font-medium text-gray-500 mb-1">
             Purpose of the Work
           </label>
           <Textarea

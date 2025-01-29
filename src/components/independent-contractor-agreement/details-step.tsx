@@ -57,7 +57,7 @@ export function DetailsStep({ formData, updateFormData, onEnterPress }: DetailsS
           onKeyDown={handleKeyDown}
         />
         <div className="space-y-2">
-          <label htmlFor="start-date" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="start-date" className="block text-sm font-medium text-gray-500">
             Start Date of Agreement
           </label>
           <Input
@@ -69,7 +69,7 @@ export function DetailsStep({ formData, updateFormData, onEnterPress }: DetailsS
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="end-date" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="end-date" className="block text-sm font-medium text-gray-500">
             End Date of Agreement
           </label>
           <Input

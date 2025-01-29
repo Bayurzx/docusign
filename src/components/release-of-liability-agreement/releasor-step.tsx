@@ -37,7 +37,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="releasorFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -50,7 +50,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input
@@ -63,7 +63,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -76,7 +76,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -89,7 +89,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -102,7 +102,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorPostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorPostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -115,7 +115,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -128,7 +128,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorSignature" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorSignature" className="block text-sm font-medium text-gray-500 mb-1">
             Signature
           </label>
           <Input
@@ -141,7 +141,7 @@ export function ReleasorStep({ formData, updateFormData, onEnterPress }: Releaso
           />
         </div>
         <div>
-          <label htmlFor="releasorSignatureDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releasorSignatureDate" className="block text-sm font-medium text-gray-500 mb-1">
             Signature Date
           </label>
           <Input

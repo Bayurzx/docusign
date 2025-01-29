@@ -1,21 +1,7 @@
 import { NextResponse } from "next/server";
+import { ErrorResponse } from "@/types"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
-type ErrorResponse = {
-  response?: {
-    status?: number;
-    body?: {
-      errorCode?: string;
-      message?: string;
-    };
-  };
-  isAuthenticationError?: boolean;
-  details?: {
-    reason?: string;
-  };
-  message?: string;
-};
 
 export async function POST(request: Request) {
   try {

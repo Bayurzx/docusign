@@ -40,14 +40,14 @@ export function DetailsStep({ formData, updateFormData, onEnterPress }: DetailsS
         />
         <Input
           type="text"
-          placeholder="Governing State"
+          placeholder="Governing laws of the State of..."
           value={formData.legal.governingState}
           onChange={(e) => updateFormData("legal.governingState", e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <Input
           type="text"
-          placeholder="Arbitration Body"
+          placeholder="Arbitration Body(Disputes shall be resolved by...)"
           value={formData.legal.arbitrationBody}
           onChange={(e) => updateFormData("legal.arbitrationBody", e.target.value)}
           onKeyDown={handleKeyDown}

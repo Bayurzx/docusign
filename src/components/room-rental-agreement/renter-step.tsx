@@ -30,7 +30,7 @@ export function RenterStep({ formData, updateFormData, onEnterPress }: RenterSte
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="renterFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="renterFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -43,7 +43,7 @@ export function RenterStep({ formData, updateFormData, onEnterPress }: RenterSte
           />
         </div>
         <div>
-          <label htmlFor="renterLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="renterLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input

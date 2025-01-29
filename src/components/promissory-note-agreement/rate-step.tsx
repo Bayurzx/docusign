@@ -35,7 +35,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="principalSum" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="principalSum" className="block text-sm font-medium text-gray-500 mb-1">
             Principal Sum
           </label>
           <Input
@@ -48,7 +48,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="principalSumInWriting" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="principalSumInWriting" className="block text-sm font-medium text-gray-500 mb-1">
             Principal Sum in Writing
           </label>
           <Input
@@ -61,7 +61,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="interestRate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="interestRate" className="block text-sm font-medium text-gray-500 mb-1">
             Interest Rate
           </label>
           <Input
@@ -74,7 +74,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="interestRateInNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="interestRateInNumber" className="block text-sm font-medium text-gray-500 mb-1">
             Interest Rate in Number
           </label>
           <Input
@@ -87,7 +87,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="paymentDueDay" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentDueDay" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Due Day
           </label>
           <Input
@@ -100,7 +100,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="paymentDueMonth" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentDueMonth" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Due Month
           </label>
           <Input
@@ -113,7 +113,7 @@ export function RateStep({ formData, updateFormData, onEnterPress }: RateStepPro
           />
         </div>
         <div>
-          <label htmlFor="paymentDueYear" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentDueYear" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Due Year
           </label>
           <Input

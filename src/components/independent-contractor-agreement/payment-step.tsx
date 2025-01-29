@@ -56,7 +56,7 @@ export function PaymentStep({ formData, updateFormData, onEnterPress }: PaymentS
         />
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="initial-payment-date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="initial-payment-date" className="block text-sm font-medium text-gray-500">
               Initial Payment Date
             </label>
             <Input
@@ -77,7 +77,7 @@ export function PaymentStep({ formData, updateFormData, onEnterPress }: PaymentS
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="first-payment-date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="first-payment-date" className="block text-sm font-medium text-gray-500">
               First Payment Date
             </label>
             <Input
@@ -98,7 +98,7 @@ export function PaymentStep({ formData, updateFormData, onEnterPress }: PaymentS
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="second-payment-date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="second-payment-date" className="block text-sm font-medium text-gray-500">
               Second Payment Date
             </label>
             <Input
@@ -119,7 +119,7 @@ export function PaymentStep({ formData, updateFormData, onEnterPress }: PaymentS
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label htmlFor="final-payment-date" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="final-payment-date" className="block text-sm font-medium text-gray-500">
               Final Payment Date
             </label>
             <Input

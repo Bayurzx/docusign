@@ -1,3 +1,4 @@
+import { ErrorResponse } from "@/types"
 import { NextResponse } from "next/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -20,16 +21,17 @@ export async function GET(request: Request, { params }: { params: { envelopeId: 
     } else {
       throw new Error("Failed to fetch signing status")
     }
-  } catch (error: any) {
-    console.error("Error in fetching signing status:", error)
+  } catch (error) {
+    const err = error as ErrorResponse; // Specify the type of `error`
+    console.error("Error in fetching signing status:", err);
 
     return NextResponse.json(
       {
         success: false,
-        errorMessage: error.message,
+        errorCode: err.response?.body?.errorCode || "UNKNOWN_ERROR",
+        errorMessage: err.response?.body?.message || err.message || "An unknown error occurred",
       },
-      { status: 500 },
-    )
+      { status: err.response?.status || 500 },
+    );
   }
 }
-

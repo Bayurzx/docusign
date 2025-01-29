@@ -5,7 +5,7 @@ interface Signer1StepProps {
   formData: {
     signer1Email: string
     signer1Name: string
-    signer1ClientId: string
+    // signer1ClientId: string
   }
   updateFormData: (key: string, value: string) => void
   onEnterPress: () => void
@@ -42,13 +42,13 @@ export function Signer1Step({ formData, updateFormData, onEnterPress }: Signer1S
           onChange={(e) => updateFormData("signer1Name", e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <Input
+        {/* <Input
           type="text"
           placeholder="Client ID"
           value={formData.signer1ClientId}
           onChange={(e) => updateFormData("signer1ClientId", e.target.value)}
           onKeyDown={handleKeyDown}
-        />
+        /> */}
       </CardContent>
     </Card>
   )

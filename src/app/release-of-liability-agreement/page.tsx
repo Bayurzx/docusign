@@ -11,40 +11,18 @@ import { ReviewStep } from "@/components/release-of-liability-agreement/review-s
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { HtmlPreviewModal } from "@/components/html-preview-modal"
+import { FormDataReleaseOfLiabilityAgreement, FormValueReleaseOfLiabilityAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  date: string
-  amount: string
-  stateName: string
-  witnessDate: string
-  contractName: string
-  releasor: {
-    firstName: string
-    lastName: string
-    streetAddress: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-    signature: string
-    signatureDate: string
-  }
-  releasee: {
-    firstName: string
-    lastName: string
-    streetAddress: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-    signature: string
-    signatureDate: string
-  }
-}
+
 
 export default function ReleaseOfLiabilityAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataReleaseOfLiabilityAgreement>({
     date: new Date().toLocaleDateString(),
     amount: "",
     stateName: "",
@@ -53,6 +31,7 @@ export default function ReleaseOfLiabilityAgreement() {
     releasor: {
       firstName: "",
       lastName: "",
+      email: "",
       streetAddress: "",
       city: "",
       state: "",
@@ -64,6 +43,7 @@ export default function ReleaseOfLiabilityAgreement() {
     releasee: {
       firstName: "",
       lastName: "",
+      email: "",
       streetAddress: "",
       city: "",
       state: "",
@@ -74,6 +54,8 @@ export default function ReleaseOfLiabilityAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
 
   const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false)
   const pageIdentifier = "release-of-liability-agreement"
@@ -96,13 +78,20 @@ export default function ReleaseOfLiabilityAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this release of liability agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this release of liability agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.releasor.email
+      formData.signer1Name = formData.releasor.firstName + " " + formData.releasor.lastName
+      formData.signer2Email = formData.releasee.email
+      formData.signer2Name = formData.releasee.firstName + " " + formData.releasee.lastName
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -119,9 +108,13 @@ export default function ReleaseOfLiabilityAgreement() {
       localStorage.setItem("releaseOfLiabilityAgreementData", JSON.stringify(formData))
       toast({
         title: "Release of Liability Agreement Submitted",
-        description: `Your release of liability agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your release of liability agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -129,21 +122,31 @@ export default function ReleaseOfLiabilityAgreement() {
         description: "Failed to submit the release of liability agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueReleaseOfLiabilityAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
+      const newData = { ...prev };
+      const keys = key.split('.');
+
+      let current: Record<string, unknown> = newData;
+
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataReleaseOfLiabilityAgreement;
+    });
+  };
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("releaseOfLiabilityAgreementData")
@@ -165,6 +168,7 @@ export default function ReleaseOfLiabilityAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-between mb-4">
         <Button onClick={openHtmlModal}>Preview HTML</Button>
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>

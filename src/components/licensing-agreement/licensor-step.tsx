@@ -10,6 +10,7 @@ interface LicensorStepProps {
       state: string
       postalCode: string
       signature: {
+        email: string
         firstName: string
         lastName: string
         position: string
@@ -86,6 +87,14 @@ export function LicensorStep({ formData, updateFormData, onEnterPress }: Licenso
           value={formData.licensor.signature.lastName}
           onChange={(e) => updateFormData("licensor.signature.lastName", e.target.value)}
           onKeyDown={handleKeyDown}
+        />
+        <Input
+          type="email"
+          placeholder="Email"
+          value={formData.licensor.signature.email}
+          onChange={(e) => updateFormData("licensor.signature.email", e.target.value)}
+          onKeyDown={handleKeyDown}
+          required
         />
         <Input
           type="text"

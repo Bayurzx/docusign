@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
     const response = await fetch(`${BASE_URL}/signing/ping`, {
       method: "POST",

@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 interface ReceivingPartyStepProps {
   formData: {
     receivingPartyName: string
+    receivingPartyEmail: string
     receivingPartyStreet: string
     receivingPartyCity: string
     receivingPartyState: string
@@ -34,7 +35,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="receivingPartyName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyName" className="block text-sm font-medium text-gray-500 mb-1">
             Name
           </label>
           <Input
@@ -47,7 +48,20 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyStreet" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyEmail" className="block text-sm font-medium text-gray-500 mb-1">
+            Name
+          </label>
+          <Input
+            id="receivingPartyEmail"
+            type="email"
+            placeholder="Email"
+            value={formData.receivingPartyEmail}
+            onChange={(e) => updateFormData("receivingPartyEmail", e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        <div>
+          <label htmlFor="receivingPartyStreet" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -60,7 +74,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -73,7 +87,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -86,7 +100,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyPostal" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyPostal" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -99,7 +113,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -112,7 +126,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartySignature" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartySignature" className="block text-sm font-medium text-gray-500 mb-1">
             Signature
           </label>
           <Input
@@ -125,7 +139,7 @@ export function ReceivingPartyStep({ formData, updateFormData, onEnterPress }: R
           />
         </div>
         <div>
-          <label htmlFor="receivingPartyDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="receivingPartyDate" className="block text-sm font-medium text-gray-500 mb-1">
             Date
           </label>
           <Input

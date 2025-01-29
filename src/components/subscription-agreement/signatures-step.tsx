@@ -40,7 +40,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
         <div>
           <h3 className="text-lg font-semibold mb-2">Company Signature</h3>
           <div>
-            <label htmlFor="companySignatureName" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="companySignatureName" className="block text-sm font-medium text-gray-500 mb-1">
               Name
             </label>
             <Input
@@ -53,7 +53,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
             />
           </div>
           <div>
-            <label htmlFor="companySignatureDate" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="companySignatureDate" className="block text-sm font-medium text-gray-500 mb-1">
               Date
             </label>
             <Input
@@ -68,7 +68,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
             </p>
           </div>
           <div>
-            <label htmlFor="companySignature" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="companySignature" className="block text-sm font-medium text-gray-500 mb-1">
               Signature
             </label>
             <Input
@@ -84,7 +84,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
         <div>
           <h3 className="text-lg font-semibold mb-2">Investor Signature</h3>
           <div>
-            <label htmlFor="investorSignatureName" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="investorSignatureName" className="block text-sm font-medium text-gray-500 mb-1">
               Name
             </label>
             <Input
@@ -97,7 +97,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
             />
           </div>
           <div>
-            <label htmlFor="investorSignatureDate" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="investorSignatureDate" className="block text-sm font-medium text-gray-500 mb-1">
               Date
             </label>
             <Input
@@ -110,7 +110,7 @@ export function SignaturesStep({ formData, updateFormData, onEnterPress }: Signa
             <p className="text-sm text-gray-500 mt-1">Enter the date when the investor signs the agreement.</p>
           </div>
           <div>
-            <label htmlFor="investorSignature" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="investorSignature" className="block text-sm font-medium text-gray-500 mb-1">
               Signature
             </label>
             <Input

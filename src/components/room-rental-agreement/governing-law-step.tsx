@@ -29,7 +29,7 @@ export function GoverningLawStep({ formData, updateFormData, onEnterPress }: Gov
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="governingState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="governingState" className="block text-sm font-medium text-gray-500 mb-1">
             Governing State
           </label>
           <Input

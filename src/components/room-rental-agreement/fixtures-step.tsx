@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { FormValueRoomRentalAgreement } from "@/types"
 
 interface FixturesStepProps {
   formData: {
@@ -10,7 +11,7 @@ interface FixturesStepProps {
       depositAmount: string
     }
   }
-  updateFormData: (key: string, value: any) => void
+  updateFormData: (key: string, value: FormValueRoomRentalAgreement) => void
   onEnterPress: () => void
 }
 
@@ -50,7 +51,7 @@ export function FixturesStep({ formData, updateFormData, onEnterPress }: Fixture
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="fixtures" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="fixtures" className="block text-sm font-medium text-gray-500 mb-1">
             Fixtures
           </label>
           <div className="flex space-x-2">
@@ -76,7 +77,7 @@ export function FixturesStep({ formData, updateFormData, onEnterPress }: Fixture
           </ul>
         </div>
         <div>
-          <label htmlFor="depositAmount" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="depositAmount" className="block text-sm font-medium text-gray-500 mb-1">
             Deposit Amount
           </label>
           <Input

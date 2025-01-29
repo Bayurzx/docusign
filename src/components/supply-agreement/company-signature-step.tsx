@@ -28,7 +28,7 @@ export function CompanySignatureStep({ formData, updateFormData, onEnterPress }:
         <CardTitle className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
           Company Signature
         </CardTitle>
-        <CardDescription>Enter the company's signature details</CardDescription>
+        <CardDescription>Enter the company&apos;s signature details</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <Input

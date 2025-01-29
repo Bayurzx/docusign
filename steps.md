@@ -112,19 +112,6 @@ Session {
 }
 ```
 
-## Supply Agreement
-- Updated handleSubmit(s) onClick for the three endpoints @ `src\components\supply-agreement\review-step.tsx:23,34`
-  - Also update the Button name.
-- Also update the `formData` in `src\app\supply-agreement\page.tsx:73,3` to speed up development process
-- Commented out `ContractStep` at page (import and const steps)
-- Added isLoading functionality
-  - disabled click when loading is true
-  - setIsLoading on the start of final submission and false when it's finally done
-- updating formData in finalSubmit to avoid missing input at backend
-  - contractName
-  - Added LoadingSpinner which shows when loading is true
-
-
 ## Login and logout
 - Set up login with route
   - modified:   src/app/api/docusign/auth/route.ts
@@ -167,6 +154,25 @@ Subscription Agreement.html
 Supply Agreement.html
 
 
+
+## Supply Agreement
+- Updated handleSubmit(s) onClick for the three endpoints @ `src\components\supply-agreement\review-step.tsx:23,34`
+  - Also update the Button name.
+- Also update the `formData` in `src\app\supply-agreement\page.tsx:73,3` to speed up development process
+- Commented out `ContractStep` and `CCStep` at page (import and const steps)
+- Added isLoading functionality
+  - disabled click when loading is true
+  - setIsLoading on the start of final submission and false when it's finally done
+- updating formData in finalSubmit to avoid missing input at backend
+  - contractName
+  - Added LoadingSpinner which shows when loading is true
+- Removed and re-imported `FormDataSupplyAgreement, FormValueSupplyAgreement` types
+  - Rename FormData to FormDataSupplyAgreement
+- Will have the following as the only constant formData: `signer1Email, signer1Name, signer2Email, signer2Name` and `contractName`
+  - `contractName` will be derived from a mapping function using the route info as input check Line `src\app\supply-agreement\page.tsx:125,7`
+- Fixed updateFormData function typing error
+  - Each FormValue should have it's own typing : `FormValueSupplyAgreement`
+- Added `<LoadingSpinner show={isLoading} />` to DOM
 
 ### Bonus
 - Was able to create clones like whatsapp etc.

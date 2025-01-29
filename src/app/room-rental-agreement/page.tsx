@@ -16,64 +16,29 @@ import { ReviewStep } from "@/components/room-rental-agreement/review-step"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { HtmlPreviewModal } from "@/components/html-preview-modal"
+import { FormDataRoomRentalAgreement, FormValueRoomRentalAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  contractName: string
-  houseowner: {
-    firstName: string
-    lastName: string
-  }
-  renter: {
-    firstName: string
-    lastName: string
-  }
-  address: {
-    streetAddress: string
-    streetAddressLine2: string
-    city: string
-    stateProvince: string
-    postalCode: string
-    country: string
-  }
-  terms: {
-    startDate: string
-    noticePeriod: string
-    rent: string
-    paymentMethod: string
-    paymentDay: string
-  }
-  utilities: {
-    gasElectricity: number
-    water: number
-    garbage: number
-    internet: number
-    cableTV: number
-    otherLiability: number
-  }
-  fixtures: {
-    list: string[]
-    depositAmount: string
-  }
-  governingLaw: {
-    state: string
-  }
-  signatures: {
-    renterDate: string
-    houseownerDate: string
-  }
-}
+
+
 
 export default function RoomRentalAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataRoomRentalAgreement>({
     contractName: "Room Rental Agreement",
     houseowner: {
       firstName: "",
       lastName: "",
+      email: "",
     },
     renter: {
       firstName: "",
       lastName: "",
+      email: "",
     },
     address: {
       streetAddress: "",
@@ -111,6 +76,9 @@ export default function RoomRentalAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
+
 
   const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false)
   const pageIdentifier = "room-rental-agreement"
@@ -143,13 +111,20 @@ export default function RoomRentalAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this room rental agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this room rental agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.renter.email
+      formData.signer1Name = formData.renter.firstName + " " + formData.renter.lastName
+      formData.signer2Email = formData.houseowner.email
+      formData.signer2Name = formData.houseowner.firstName + " " + formData.houseowner.lastName
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -166,9 +141,13 @@ export default function RoomRentalAgreement() {
       localStorage.setItem("roomRentalAgreementData", JSON.stringify(formData))
       toast({
         title: "Room Rental Agreement Submitted",
-        description: `Your room rental agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your room rental agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -176,22 +155,31 @@ export default function RoomRentalAgreement() {
         description: "Failed to submit the room rental agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueRoomRentalAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
-      for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
-      }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+      const newData = { ...prev };
+      const keys = key.split('.');
 
+      let current: Record<string, unknown> = newData;
+
+      for (let i = 0; i < keys.length - 1; i++) {
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
+      }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataRoomRentalAgreement;
+    });
+  };
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("roomRentalAgreementData")
     if (savedData) {
@@ -212,6 +200,7 @@ export default function RoomRentalAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-between mb-4">
         <Button onClick={openHtmlModal}>Preview HTML</Button>
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>

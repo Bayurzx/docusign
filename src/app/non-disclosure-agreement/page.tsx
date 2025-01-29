@@ -11,34 +11,22 @@ import { ReviewStep } from "@/components/non-disclosure-agreement/review-step"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { HtmlPreviewModal } from "@/components/html-preview-modal"
+import { FormDataNonDisclosureAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  contractName: string
-  purposeOfTheWork: string
-  disclosingPartyName: string
-  disclosingPartyStreet: string
-  disclosingPartyCity: string
-  disclosingPartyState: string
-  disclosingPartyPostal: string
-  disclosingPartyCountry: string
-  disclosingPartySignature: string
-  disclosingPartyDate: string
-  receivingPartyName: string
-  receivingPartyStreet: string
-  receivingPartyCity: string
-  receivingPartyState: string
-  receivingPartyPostal: string
-  receivingPartyCountry: string
-  receivingPartySignature: string
-  receivingPartyDate: string
-}
+
 
 export default function NonDisclosureAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataNonDisclosureAgreement>({
     contractName: "Non-Disclosure Agreement",
     purposeOfTheWork: "",
     disclosingPartyName: "",
+    disclosingPartyEmail: "",
     disclosingPartyStreet: "",
     disclosingPartyCity: "",
     disclosingPartyState: "",
@@ -47,6 +35,7 @@ export default function NonDisclosureAgreement() {
     disclosingPartySignature: "",
     disclosingPartyDate: new Date().toISOString().split("T")[0],
     receivingPartyName: "",
+    receivingPartyEmail: "",
     receivingPartyStreet: "",
     receivingPartyCity: "",
     receivingPartyState: "",
@@ -56,6 +45,8 @@ export default function NonDisclosureAgreement() {
     receivingPartyDate: new Date().toISOString().split("T")[0],
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
 
   const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false)
   const pageIdentifier = "non-disclosure-agreement"
@@ -78,13 +69,20 @@ export default function NonDisclosureAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this non-disclosure agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this non-disclosure agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.receivingPartyEmail
+      formData.signer1Name = formData.receivingPartyName
+      formData.signer2Email = formData.disclosingPartyEmail
+      formData.signer2Name = formData.disclosingPartyName
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -101,9 +99,13 @@ export default function NonDisclosureAgreement() {
       localStorage.setItem("nonDisclosureAgreementData", JSON.stringify(formData))
       toast({
         title: "Non-Disclosure Agreement Submitted",
-        description: `Your non-disclosure agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your non-disclosure agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -111,10 +113,12 @@ export default function NonDisclosureAgreement() {
         description: "Failed to submit the non-disclosure agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: string) => {
     setFormData((prev) => ({ ...prev, [key]: value }))
   }
 
@@ -138,6 +142,7 @@ export default function NonDisclosureAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-between mb-4">
         <Button onClick={openHtmlModal}>Preview HTML</Button>
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>

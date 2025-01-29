@@ -1,8 +1,9 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { FormDataSubscriptionAgreement } from "@/types"
 
 interface ReviewStepProps {
-  formData: any
+  formData: FormDataSubscriptionAgreement
   handleSubmit: (apiEndpoint: string) => void
 }
 
@@ -20,14 +21,14 @@ export function ReviewStep({ formData, handleSubmit }: ReviewStepProps) {
           {JSON.stringify(formData, null, 2)}
         </pre>
         <div className="flex flex-col space-y-4">
-          <Button onClick={() => handleSubmit("/api/submit-agreement")} className="bg-green-500 hover:bg-green-600">
-            Submit Agreement
+          <Button onClick={() => handleSubmit("/api/signing/responsive")} className="bg-green-500 hover:bg-green-600">
+            Responsive Signing
           </Button>
-          <Button onClick={() => handleSubmit("/api/save-draft")} className="bg-blue-500 hover:bg-blue-600">
-            Save as Draft
+          <Button onClick={() => handleSubmit("/api/signing/remote-html")} className="bg-blue-500 hover:bg-blue-600">
+            Remote Signing
           </Button>
-          <Button onClick={() => handleSubmit("/api/request-review")} className="bg-yellow-500 hover:bg-yellow-600">
-            Request Review
+          <Button onClick={() => handleSubmit("/api/signing/embedded")} className="bg-yellow-500 hover:bg-yellow-600">
+            Embedded Signing
           </Button>
         </div>
       </CardContent>

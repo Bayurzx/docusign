@@ -37,7 +37,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="releaseeFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -50,7 +50,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input
@@ -63,7 +63,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -76,7 +76,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -89,7 +89,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -102,7 +102,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseePostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseePostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -115,7 +115,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -128,7 +128,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeSignature" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeSignature" className="block text-sm font-medium text-gray-500 mb-1">
             Signature
           </label>
           <Input
@@ -141,7 +141,7 @@ export function ReleaseeStep({ formData, updateFormData, onEnterPress }: Release
           />
         </div>
         <div>
-          <label htmlFor="releaseeSignatureDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="releaseeSignatureDate" className="block text-sm font-medium text-gray-500 mb-1">
             Signature Date
           </label>
           <Input

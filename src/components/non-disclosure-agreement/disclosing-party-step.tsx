@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 interface DisclosingPartyStepProps {
   formData: {
     disclosingPartyName: string
+    disclosingPartyEmail: string
     disclosingPartyStreet: string
     disclosingPartyCity: string
     disclosingPartyState: string
@@ -34,7 +35,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="disclosingPartyName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyName" className="block text-sm font-medium text-gray-500 mb-1">
             Name
           </label>
           <Input
@@ -47,7 +48,20 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyStreet" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyEmail" className="block text-sm font-medium text-gray-500 mb-1">
+            Name
+          </label>
+          <Input
+            id="disclosingPartyEmail"
+            type="email"
+            placeholder="Email"
+            value={formData.disclosingPartyEmail}
+            onChange={(e) => updateFormData("disclosingPartyEmail", e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        <div>
+          <label htmlFor="disclosingPartyStreet" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -60,7 +74,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -73,7 +87,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -86,7 +100,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyPostal" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyPostal" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -99,7 +113,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -112,7 +126,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartySignature" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartySignature" className="block text-sm font-medium text-gray-500 mb-1">
             Signature
           </label>
           <Input
@@ -125,7 +139,7 @@ export function DisclosingPartyStep({ formData, updateFormData, onEnterPress }: 
           />
         </div>
         <div>
-          <label htmlFor="disclosingPartyDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="disclosingPartyDate" className="block text-sm font-medium text-gray-500 mb-1">
             Date
           </label>
           <Input

@@ -12,6 +12,7 @@ interface LicenseeStepProps {
       postalCode: string
       country: string
       signature: {
+        email: string
         firstName: string
         lastName: string
         position: string
@@ -101,6 +102,13 @@ export function LicenseeStep({ formData, updateFormData, onEnterPress }: License
           placeholder="Last Name"
           value={formData.licensee.signature.lastName}
           onChange={(e) => updateFormData("licensee.signature.lastName", e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <Input
+          type="email"
+          placeholder="Email"
+          value={formData.licensee.signature.email}
+          onChange={(e) => updateFormData("licensee.signature.email", e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <Input

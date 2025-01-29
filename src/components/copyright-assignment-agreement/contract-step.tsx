@@ -39,34 +39,42 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           onChange={(e) => updateFormData("contract.name", e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <Input
-          type="date"
-          placeholder="Current Date"
-          value={formData.contract.current_date}
-          onChange={(e) => updateFormData("contract.current_date", e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+
+        <div>
+          <label htmlFor="currentDate">Current Date</label>
+          <Input
+            type="date"
+            placeholder="Current Date"
+            value={formData.contract.current_date}
+            onChange={(e) => updateFormData("contract.current_date", e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
         <Input
           type="text"
-          placeholder="Governing Law"
+          placeholder="Governing Federal Law of the State of..."
           value={formData.contract.governing_law}
           onChange={(e) => updateFormData("contract.governing_law", e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <Input
           type="text"
-          placeholder="Jurisdiction"
+          placeholder="Courts located in the Jurisdiction of..."
           value={formData.contract.jurisdiction}
           onChange={(e) => updateFormData("contract.jurisdiction", e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <Input
-          type="date"
-          placeholder="Execution Date"
-          value={formData.contract.execution_date}
-          onChange={(e) => updateFormData("contract.execution_date", e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+        <div>
+          <label htmlFor="executionDate">Execution Date</label>
+          <Input
+            id="executionDate"
+            type="date"
+            placeholder="Execution Date"
+            value={formData.contract.execution_date}
+            onChange={(e) => updateFormData("contract.execution_date", e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
       </CardContent>
     </Card>
   )

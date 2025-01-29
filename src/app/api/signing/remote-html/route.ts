@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { ErrorResponse } from "@/types"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -28,17 +29,17 @@ export async function POST(request: Request) {
     } else {
       throw new Error(result.message || "An error occurred during the remote HTML signing process")
     }
-  } catch (error: any) {
-    console.error("Error in remote HTML signing:", error)
+  } catch (error) {
+    const err = error as ErrorResponse; // Specify the type of `error`
+    console.error("Error in remote HTML signing:", err);
 
     return NextResponse.json(
       {
         success: false,
-        errorCode: error.response?.body?.errorCode || "UNKNOWN_ERROR",
-        errorMessage: error.response?.body?.message || error.message,
+        errorCode: err.response?.body?.errorCode || "UNKNOWN_ERROR",
+        errorMessage: err.response?.body?.message || err.message || "An unknown error occurred",
       },
-      { status: error.response?.status || 500 },
-    )
+      { status: err.response?.status || 500 },
+    );
   }
 }
-

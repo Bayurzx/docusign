@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { ProgressBar } from "@/components/progress-bar"
 import { Signer1Step } from "@/components/supply-agreement/signer1-step"
 import { Signer2Step } from "@/components/supply-agreement/signer2-step"
-import { CCStep } from "@/components/supply-agreement/cc-step"
+// import { CCStep } from "@/components/supply-agreement/cc-step"
 // import { ContractStep } from "@/components/supply-agreement/contract-step"
 import { CompanyStep } from "@/components/supply-agreement/company-step"
 import { SupplierStep } from "@/components/supply-agreement/supplier-step"
@@ -20,73 +20,26 @@ import { useToast } from "@/components/ui/use-toast"
 import { LoadingSpinner } from "@/components/ui/spinner"
 import { convertToFileName, splitAndUseParts } from "@/lib/utils"
 import { usePathname } from 'next/navigation';
+import { FormDataSupplyAgreement, FormValueSupplyAgreement } from "@/types"
 
 
-type FormData = {
-  signer1Email: string
-  signer1Name: string
-  signer1ClientId: string
-  signer2Email: string
-  signer2Name: string
-  signer2ClientId: string
-  ccEmail: string
-  ccName: string
-  docFile: File | null | string
-  contractName: string
-  company: {
-    name: string
-    street: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-  }
-  supplier: {
-    name: string
-    street: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-    date: string
-  }
-  products: Array<{ name: string; description: string; price: string }>
-  deliveryDays: string
-  terminationNoticeDays: string
-  remedyPeriodDays: string
-  paymentTermDays: string
-  interestRate: string
-  warrantyPeriod: string
-  governingState: string
-  supplierSignature: {
-    signature: string
-    firstName: string
-    lastName: string
-    date: string
-  }
-  companySignature: {
-    signature: string
-    firstName: string
-    lastName: string
-    date: string
-  }
-}
+
 
 export default function SupplyAgreement() {
   const [isLoading, setIsLoading] = useState(false)
 
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataSupplyAgreement>({
     signer1Email: "bayurzx@gmail.com",
     signer1Name: "John Boe",
-    signer1ClientId: "bayurzx@gmail.com",
+    // signer1ClientId: "bayurzx@gmail.com",
     signer2Email: "yemiade5700@gmail.com",
     signer2Name: "Ade Yemi",
-    signer2ClientId: "yemiade5700@gmail.com",
-    ccEmail: "docutest@iglumtech.com",
-    ccName: "DocuTest",
-    docFile: null,
-    contractName: "Supply Agreement.html",
+    // signer2ClientId: "yemiade5700@gmail.com",
+    // ccEmail: "docutest@iglumtech.com",
+    // ccName: "DocuTest",
+    // docFile: null,
+    // contractName: "Supply Agreement.html",
     company: {
       name: "Iglum Innovators Inc",
       street: "123 Innovation Drive",
@@ -137,7 +90,7 @@ export default function SupplyAgreement() {
   const steps = [
     Signer1Step,
     Signer2Step,
-    CCStep,
+    // CCStep,
     // ContractStep,
     CompanyStep,
     SupplierStep,
@@ -170,8 +123,7 @@ export default function SupplyAgreement() {
 
     try {
       formData.contractName = convertToFileName(pathHtml)
-      formData.docFile = formData.contractName
-      console.log("formData.docFile", formData.docFile);
+      // formData.docFile = formData.contractName
       
       const response = await fetch(apiEndpoint, {
         method: "POST",
@@ -208,18 +160,40 @@ export default function SupplyAgreement() {
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
-    setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
-      for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+  // const updateFormData = (key: string, value: any) => {
+  //   setFormData((prev) => {
+  //     const newData = { ...prev }
+  //     const keys = key.split(".")
+  //     let current: any = newData
+  //     for (let i = 0; i < keys.length - 1; i++) {
+  //       current = current[keys[i]]
+  //     }
+  //     current[keys[keys.length - 1]] = value
+  //     return newData
+  //   })
+  // }
+
+
+const updateFormData = (key: string, value: FormValueSupplyAgreement) => {
+  setFormData((prev) => {
+    const newData = { ...prev };
+    const keys = key.split('.');
+    
+    let current: Record<string, unknown> = newData;
+    
+    for (let i = 0; i < keys.length - 1; i++) {
+      const keyPart = keys[i];
+      if (!(current[keyPart] instanceof Object)) {
+        current[keyPart] = {};
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+      current = current[keyPart] as Record<string, unknown>;
+    }
+
+    const finalKey = keys[keys.length - 1];
+    current[finalKey] = value;
+    return newData as FormDataSupplyAgreement;
+  });
+};
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("supplyAgreementData")

@@ -16,6 +16,7 @@ interface Person1StepProps {
       }
       state: string
       country: string
+      email: string
     }
   }
   updateFormData: (key: string, value: string) => void
@@ -93,6 +94,13 @@ export function Person1Step({ formData, updateFormData, onEnterPress }: Person1S
           placeholder="Country"
           value={formData.person_1.country}
           onChange={(e) => updateFormData("person_1.country", e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <Input
+          type="email"
+          placeholder="Email"
+          value={formData.person_1.email}
+          onChange={(e) => updateFormData("person_1.email", e.target.value)}
           onKeyDown={handleKeyDown}
         />
       </CardContent>

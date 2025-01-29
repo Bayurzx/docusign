@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 interface ClientStepProps {
   formData: {
     client: {
+      email: string
       company_name: string
       full_name: {
         first_name: string
@@ -59,6 +60,13 @@ export function ClientStep({ formData, updateFormData, onEnterPress }: ClientSte
           placeholder="Last Name"
           value={formData.client.full_name.last_name}
           onChange={(e) => updateFormData("client.full_name.last_name", e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <Input
+          type="text"
+          placeholder="Email"
+          value={formData.client.email}
+          onChange={(e) => updateFormData("client.email", e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <Input

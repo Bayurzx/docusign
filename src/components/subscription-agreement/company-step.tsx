@@ -37,7 +37,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyName" className="block text-sm font-medium text-gray-500 mb-1">
             Company Name
           </label>
           <Input
@@ -50,7 +50,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -63,7 +63,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyStreetAddressLine2" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyStreetAddressLine2" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address Line 2
           </label>
           <Input
@@ -76,7 +76,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -89,7 +89,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -102,7 +102,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyPostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyPostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -115,7 +115,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -128,7 +128,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyEmail" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyEmail" className="block text-sm font-medium text-gray-500 mb-1">
             Email
           </label>
           <Input
@@ -141,7 +141,7 @@ export function CompanyStep({ formData, updateFormData, onEnterPress }: CompanyS
           />
         </div>
         <div>
-          <label htmlFor="companyPhoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="companyPhoneNumber" className="block text-sm font-medium text-gray-500 mb-1">
             Phone Number
           </label>
           <Input

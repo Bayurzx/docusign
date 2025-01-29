@@ -1,3 +1,4 @@
+import { Envelope, ErrorResponse } from "@/types"
 import { NextResponse } from "next/server"
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
@@ -17,7 +18,7 @@ export async function GET(request: Request) {
     const results = await response.json()
 
     if (response.ok) {
-      const allEnvelopeIds = results.envelopes.map((envelope: any) => envelope.envelopeId)
+      const allEnvelopeIds = results.envelopes.map((envelope: Envelope) => envelope.envelopeId);
 
       return NextResponse.json(
         {
@@ -34,17 +35,17 @@ export async function GET(request: Request) {
     } else {
       throw new Error("Failed to fetch envelopes")
     }
-  } catch (error: any) {
-    console.error("Error in fetching envelopes:", error)
+  } catch (error) {
+    const err = error as ErrorResponse; // Specify the type of `error`
+    console.error("Error in fetching all envelopes:", err);
 
     return NextResponse.json(
       {
         success: false,
-        errorCode: error.response?.body?.errorCode || "UNKNOWN_ERROR",
-        errorMessage: error.response?.body?.message || error.message,
+        errorCode: err.response?.body?.errorCode || "UNKNOWN_ERROR",
+        errorMessage: err.response?.body?.message || err.message || "An unknown error occurred",
       },
-      { status: error.response?.status || 500 },
-    )
+      { status: err.response?.status || 500 },
+    );
   }
 }
-

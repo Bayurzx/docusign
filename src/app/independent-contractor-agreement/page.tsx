@@ -13,82 +13,17 @@ import { ReviewStep } from "@/components/independent-contractor-agreement/review
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { HtmlPreviewModal } from "@/components/html-preview-modal"
+import { FormDataIndependentContractorAgreement, FormValueIndependentContractorAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  contract: {
-    name: string
-    date: {
-      day: number
-      month: string
-      year: number
-    }
-    governing_law: string
-  }
-  contractor: {
-    name: string
-    address: {
-      street: string
-      street_line_2: string
-      city: string
-      state: string
-      postal: string
-      country: string
-    }
-    phone: string
-    email: string
-    signature_date: string
-  }
-  client: {
-    name: string
-    address: {
-      street: string
-      street_line_2: string
-      city: string
-      state: string
-      postal: string
-      country: string
-    }
-    phone: string
-    email: string
-    signature_date: string
-  }
-  subject: string
-  scope_of_work: string
-  term: {
-    duration: string
-    start_date: string
-    end_date: string
-  }
-  termination: {
-    notice_period_days: number
-  }
-  payment: {
-    total_amount: string
-    schedule: {
-      initial_payment: {
-        date: string
-        amount: string
-      }
-      first_payment: {
-        date: string
-        amount: string
-      }
-      second_payment: {
-        date: string
-        amount: string
-      }
-      final_payment: {
-        date: string
-        amount: string
-      }
-    }
-    late_payment_interest: string
-  }
-}
 
 export default function IndependentContractorAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataIndependentContractorAgreement>({
     contract: {
       name: "Independent Contractor Agreement",
       date: {
@@ -160,13 +95,15 @@ export default function IndependentContractorAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
 
-  const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false)
-  const pageIdentifier = "independent-contractor-agreement"
+  const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false) 
+  const pageIdentifier = "independent-contractor-agreement" 
 
-  const openHtmlModal = () => {
-    setIsHtmlModalOpen(true)
-  }
+  const openHtmlModal = () => { 
+    setIsHtmlModalOpen(true) 
+  } 
 
   const steps = [ContractStep, ContractorStep, ClientStep, DetailsStep, PaymentStep, ReviewStep]
   const CurrentStep = steps[step]
@@ -182,13 +119,20 @@ export default function IndependentContractorAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this independent contractor agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this independent contractor agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.contractor.email
+      formData.signer1Name = formData.contractor.name
+      formData.signer2Email = formData.client.email
+      formData.signer2Name = formData.client.name
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -205,9 +149,13 @@ export default function IndependentContractorAgreement() {
       localStorage.setItem("independentContractorAgreementData", JSON.stringify(formData))
       toast({
         title: "Independent Contractor Agreement Submitted",
-        description: `Your independent contractor agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your independent contractor agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -215,21 +163,31 @@ export default function IndependentContractorAgreement() {
         description: "Failed to submit the independent contractor agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueIndependentContractorAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
+      const newData = { ...prev };
+      const keys = key.split('.');
+
+      let current: Record<string, unknown> = newData;
+
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataIndependentContractorAgreement;
+    });
+  };
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("independentContractorAgreementData")
@@ -251,8 +209,9 @@ export default function IndependentContractorAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-between mb-4">
-        <Button onClick={openHtmlModal}>Preview HTML</Button>
+        <Button onClick={openHtmlModal}>Preview HTML</Button> 
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>
       </div>
       <div className="w-full xl:w-3/4 mx-auto">
@@ -286,11 +245,11 @@ export default function IndependentContractorAgreement() {
           ) : null}
         </div>
       </div>
-      <HtmlPreviewModal
-        isOpen={isHtmlModalOpen}
-        onClose={() => setIsHtmlModalOpen(false)}
-        pageIdentifier={pageIdentifier}
-      />
+      <HtmlPreviewModal 
+        isOpen={isHtmlModalOpen} 
+        onClose={() => setIsHtmlModalOpen(false)} 
+        pageIdentifier={pageIdentifier} 
+      /> 
     </div>
   )
 }

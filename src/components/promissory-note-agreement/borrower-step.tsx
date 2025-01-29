@@ -39,7 +39,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="borrowerFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -52,7 +52,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input
@@ -65,7 +65,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -78,7 +78,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerStreetAddressLine2" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerStreetAddressLine2" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address Line 2
           </label>
           <Input
@@ -91,7 +91,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -104,7 +104,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -117,7 +117,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerPostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerPostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -130,7 +130,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -143,7 +143,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerPhoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerPhoneNumber" className="block text-sm font-medium text-gray-500 mb-1">
             Phone Number
           </label>
           <Input
@@ -156,7 +156,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerEmail" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerEmail" className="block text-sm font-medium text-gray-500 mb-1">
             Email
           </label>
           <Input
@@ -169,7 +169,7 @@ export function BorrowerStep({ formData, updateFormData, onEnterPress }: Borrowe
           />
         </div>
         <div>
-          <label htmlFor="borrowerDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="borrowerDate" className="block text-sm font-medium text-gray-500 mb-1">
             Date
           </label>
           <Input

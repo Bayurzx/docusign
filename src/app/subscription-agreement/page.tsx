@@ -14,62 +14,17 @@ import { ReviewStep } from "@/components/subscription-agreement/review-step"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { HtmlPreviewModal } from "@/components/html-preview-modal"
+import { FormDataSubscriptionAgreement, FormValueSubscriptionAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  date: string
-  contractName: string
-  company: {
-    name: string
-    streetAddress: string
-    streetAddressLine2: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-    email: string
-    phoneNumber: string
-  }
-  investor: {
-    name: string
-    streetAddress: string
-    streetAddressLine2: string
-    city: string
-    state: string
-    postalCode: string
-    country: string
-    email: string
-    phoneNumber: string
-  }
-  subscription: {
-    numberOfShares: string
-    purchasePrice: string
-    paymentPeriod: string
-    deliveryPeriod: string
-  }
-  closing: {
-    date: string
-  }
-  legal: {
-    stateCountry: string
-    jurisdiction: string
-  }
-  signatures: {
-    company: {
-      name: string
-      date: string
-      signature: string
-    }
-    investor: {
-      name: string
-      date: string
-      signature: string
-    }
-  }
-}
 
 export default function SubscriptionAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataSubscriptionAgreement>({
     date: new Date().toLocaleDateString(),
     contractName: "Subscription Agreement",
     company: {
@@ -121,6 +76,9 @@ export default function SubscriptionAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
+
 
   const [isHtmlModalOpen, setIsHtmlModalOpen] = useState(false)
   const pageIdentifier = "subscription-agreement"
@@ -151,13 +109,20 @@ export default function SubscriptionAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this subscription agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this subscription agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.company.email
+      formData.signer1Name = formData.company.name
+      formData.signer2Email = formData.investor.email
+      formData.signer2Name = formData.investor.name
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -174,9 +139,13 @@ export default function SubscriptionAgreement() {
       localStorage.setItem("subscriptionAgreementData", JSON.stringify(formData))
       toast({
         title: "Subscription Agreement Submitted",
-        description: `Your subscription agreement has been successfully submitted to ${apiEndpoint}.`,
+        description: `Your subscription agreement has been successfully submitted to ${splitAndUseParts(apiEndpoint)}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -184,21 +153,31 @@ export default function SubscriptionAgreement() {
         description: "Failed to submit the subscription agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueSubscriptionAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
+      const newData = { ...prev };
+      const keys = key.split('.');
+
+      let current: Record<string, unknown> = newData;
+
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataSubscriptionAgreement;
+    });
+  };
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("subscriptionAgreementData")
@@ -220,6 +199,7 @@ export default function SubscriptionAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-between mb-4">
         <Button onClick={openHtmlModal}>Preview HTML</Button>
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>

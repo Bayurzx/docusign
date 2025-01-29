@@ -38,7 +38,7 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
         />
         <Input
           type="text"
-          placeholder="Governing Law"
+          placeholder="Governing Laws of the State of..."
           value={formData.contract.governing_law}
           onChange={(e) => updateFormData("contract.governing_law", e.target.value)}
           onKeyDown={handleKeyDown}

@@ -33,7 +33,7 @@ export function LegalClosingStep({ formData, updateFormData, onEnterPress }: Leg
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="closingDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="closingDate" className="block text-sm font-medium text-gray-500 mb-1">
             Closing Date
           </label>
           <Input
@@ -46,7 +46,7 @@ export function LegalClosingStep({ formData, updateFormData, onEnterPress }: Leg
           <p className="text-sm text-gray-500 mt-1">Enter the date when the transaction is expected to be completed.</p>
         </div>
         <div>
-          <label htmlFor="stateCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="stateCountry" className="block text-sm font-medium text-gray-500 mb-1">
             State/Country
           </label>
           <Input
@@ -59,7 +59,7 @@ export function LegalClosingStep({ formData, updateFormData, onEnterPress }: Leg
           />
         </div>
         <div>
-          <label htmlFor="jurisdiction" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="jurisdiction" className="block text-sm font-medium text-gray-500 mb-1">
             Jurisdiction
           </label>
           <Input

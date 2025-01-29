@@ -30,7 +30,7 @@ export function HouseownerStep({ formData, updateFormData, onEnterPress }: House
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="houseownerFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="houseownerFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -43,7 +43,7 @@ export function HouseownerStep({ formData, updateFormData, onEnterPress }: House
           />
         </div>
         <div>
-          <label htmlFor="houseownerLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="houseownerLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input

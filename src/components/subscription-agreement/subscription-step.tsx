@@ -32,7 +32,7 @@ export function SubscriptionStep({ formData, updateFormData, onEnterPress }: Sub
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="numberOfShares" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="numberOfShares" className="block text-sm font-medium text-gray-500 mb-1">
             Number of Shares
           </label>
           <Input
@@ -45,7 +45,7 @@ export function SubscriptionStep({ formData, updateFormData, onEnterPress }: Sub
           />
         </div>
         <div>
-          <label htmlFor="purchasePrice" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="purchasePrice" className="block text-sm font-medium text-gray-500 mb-1">
             Purchase Price per Share
           </label>
           <Input
@@ -58,7 +58,7 @@ export function SubscriptionStep({ formData, updateFormData, onEnterPress }: Sub
           />
         </div>
         <div>
-          <label htmlFor="paymentPeriod" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="paymentPeriod" className="block text-sm font-medium text-gray-500 mb-1">
             Payment Period
           </label>
           <Input
@@ -71,7 +71,7 @@ export function SubscriptionStep({ formData, updateFormData, onEnterPress }: Sub
           />
         </div>
         <div>
-          <label htmlFor="deliveryPeriod" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="deliveryPeriod" className="block text-sm font-medium text-gray-500 mb-1">
             Delivery Period
           </label>
           <Input

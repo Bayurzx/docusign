@@ -34,7 +34,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="streetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="streetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -47,7 +47,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
           />
         </div>
         <div>
-          <label htmlFor="streetAddressLine2" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="streetAddressLine2" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address Line 2
           </label>
           <Input
@@ -60,7 +60,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
           />
         </div>
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="city" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -73,7 +73,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
           />
         </div>
         <div>
-          <label htmlFor="stateProvince" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="stateProvince" className="block text-sm font-medium text-gray-500 mb-1">
             State/Province
           </label>
           <Input
@@ -86,7 +86,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
           />
         </div>
         <div>
-          <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="postalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -99,7 +99,7 @@ export function AddressStep({ formData, updateFormData, onEnterPress }: AddressS
           />
         </div>
         <div>
-          <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="country" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input

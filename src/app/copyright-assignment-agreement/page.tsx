@@ -11,56 +11,19 @@ import { WorkStep } from "@/components/copyright-assignment-agreement/work-step"
 import { ReviewStep } from "@/components/copyright-assignment-agreement/review-step"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import { FormDataCopyrightAssignmentAgreement, FormValueCopyrightAssignmentAgreement } from "@/types"
+import { convertToFileName, splitAndUseParts } from "@/lib/utils"
+import { usePathname } from 'next/navigation';
+import { LoadingSpinner } from "@/components/ui/spinner"
 
-type FormData = {
-  contract: {
-    name: string
-    current_date: string
-    governing_law: string
-    jurisdiction: string
-    execution_date: string
-  }
-  transferor: {
-    address: {
-      street: string
-      street_line_2: string
-      city: string
-      state: string
-      postal: string
-      country: string
-    }
-    phone: string
-    email: string
-    signature: {
-      name: string
-      date: string
-    }
-  }
-  transferee: {
-    address: {
-      street: string
-      street_line_2: string
-      city: string
-      state: string
-      postal: string
-      country: string
-    }
-    phone: string
-    email: string
-    signature: {
-      name: string
-      date: string
-    }
-  }
-  work: {
-    name: string
-    description: string
-  }
-}
+
+
 
 export default function CopyrightAssignmentAgreement() {
+  const [isLoading, setIsLoading] = useState(false)
+
   const [step, setStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataCopyrightAssignmentAgreement>({
     contract: {
       name: "Copyright Assignment Agreement",
       current_date: new Date().toLocaleDateString(),
@@ -106,6 +69,8 @@ export default function CopyrightAssignmentAgreement() {
     },
   })
   const { toast } = useToast()
+  const pathname = usePathname();
+  const pathHtml = pathname.slice(1); // Removes the leading slash  
 
   const steps = [ContractStep, TransferorStep, TransfereeStep, WorkStep, ReviewStep]
   const CurrentStep = steps[step]
@@ -121,13 +86,20 @@ export default function CopyrightAssignmentAgreement() {
   const handleSubmit = (apiEndpoint: string) => {
     toast({
       title: "Confirm Submission",
-      description: `Are you sure you want to submit this copyright assignment agreement to ${apiEndpoint}?`,
-      action: <Button onClick={() => finalSubmit(apiEndpoint)}>Confirm</Button>,
+      description: `Are you sure you want to submit this copyright assignment agreement to ${splitAndUseParts(apiEndpoint)}?`,
+      action: <Button onClick={() => finalSubmit(apiEndpoint)} disabled={isLoading}>Confirm</Button>,
     })
   }
 
   const finalSubmit = async (apiEndpoint: string) => {
+    setIsLoading(true)
     try {
+      formData.contractName = convertToFileName(pathHtml)
+      formData.signer1Email = formData.transferor.email
+      formData.signer1Name = `${formData.transferor.signature.name}`
+      formData.signer2Email = formData.transferee.email
+      formData.signer2Name = `${formData.transferee.signature.name}`
+
       const response = await fetch(apiEndpoint, {
         method: "POST",
         headers: {
@@ -146,7 +118,11 @@ export default function CopyrightAssignmentAgreement() {
         title: "Copyright Assignment Agreement Submitted",
         description: `Your copyright assignment agreement has been successfully submitted to ${apiEndpoint}.`,
       })
-      // Handle the response as needed
+      // Redirect to the provided redirectUrl from either the embedded or responsive response
+      if (data.success && data.redirectUrl) {
+        window.location.href = data.redirectUrl
+        // window.open(data.redirectUrl, '_blank', 'noopener,noreferrer')
+      }
     } catch (error) {
       console.error("Error:", error)
       toast({
@@ -154,21 +130,31 @@ export default function CopyrightAssignmentAgreement() {
         description: "Failed to submit the copyright assignment agreement. Please try again.",
         variant: "destructive",
       })
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const updateFormData = (key: string, value: any) => {
+  const updateFormData = (key: string, value: FormValueCopyrightAssignmentAgreement) => {
     setFormData((prev) => {
-      const newData = { ...prev }
-      const keys = key.split(".")
-      let current: any = newData
+      const newData = { ...prev };
+      const keys = key.split('.');
+
+      let current: Record<string, unknown> = newData;
+
       for (let i = 0; i < keys.length - 1; i++) {
-        current = current[keys[i]]
+        const keyPart = keys[i];
+        if (!(current[keyPart] instanceof Object)) {
+          current[keyPart] = {};
+        }
+        current = current[keyPart] as Record<string, unknown>;
       }
-      current[keys[keys.length - 1]] = value
-      return newData
-    })
-  }
+
+      const finalKey = keys[keys.length - 1];
+      current[finalKey] = value;
+      return newData as FormDataCopyrightAssignmentAgreement;
+    });
+  };
 
   const prepopulateForm = () => {
     const savedData = localStorage.getItem("copyrightAssignmentAgreementData")
@@ -190,6 +176,7 @@ export default function CopyrightAssignmentAgreement() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <LoadingSpinner show={isLoading} />
       <div className="flex justify-end mb-4">
         <Button onClick={prepopulateForm}>Prepopulate Form</Button>
       </div>

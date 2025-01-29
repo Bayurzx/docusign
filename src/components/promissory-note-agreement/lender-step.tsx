@@ -39,7 +39,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label htmlFor="lenderFirstName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderFirstName" className="block text-sm font-medium text-gray-500 mb-1">
             First Name
           </label>
           <Input
@@ -52,7 +52,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderLastName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderLastName" className="block text-sm font-medium text-gray-500 mb-1">
             Last Name
           </label>
           <Input
@@ -65,7 +65,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderStreetAddress" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderStreetAddress" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address
           </label>
           <Input
@@ -78,7 +78,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderStreetAddressLine2" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderStreetAddressLine2" className="block text-sm font-medium text-gray-500 mb-1">
             Street Address Line 2
           </label>
           <Input
@@ -91,7 +91,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderCity" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderCity" className="block text-sm font-medium text-gray-500 mb-1">
             City
           </label>
           <Input
@@ -104,7 +104,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderState" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderState" className="block text-sm font-medium text-gray-500 mb-1">
             State
           </label>
           <Input
@@ -117,7 +117,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderPostalCode" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderPostalCode" className="block text-sm font-medium text-gray-500 mb-1">
             Postal Code
           </label>
           <Input
@@ -130,7 +130,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderCountry" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderCountry" className="block text-sm font-medium text-gray-500 mb-1">
             Country
           </label>
           <Input
@@ -143,7 +143,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderPhoneNumber" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderPhoneNumber" className="block text-sm font-medium text-gray-500 mb-1">
             Phone Number
           </label>
           <Input
@@ -156,7 +156,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderEmail" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderEmail" className="block text-sm font-medium text-gray-500 mb-1">
             Email
           </label>
           <Input
@@ -169,7 +169,7 @@ export function LenderStep({ formData, updateFormData, onEnterPress }: LenderSte
           />
         </div>
         <div>
-          <label htmlFor="lenderDate" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="lenderDate" className="block text-sm font-medium text-gray-500 mb-1">
             Date
           </label>
           <Input

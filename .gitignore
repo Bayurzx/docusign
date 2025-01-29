@@ -2,6 +2,7 @@
 *.ps1
 *.md
 !README.md
+deleted/
 
 docusign_rsa_private
 docusign_rsa.key

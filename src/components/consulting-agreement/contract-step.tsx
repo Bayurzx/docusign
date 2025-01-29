@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import { FormValueConsultingAgreement } from "@/types"
 
 interface ContractStepProps {
   formData: {
@@ -13,7 +14,7 @@ interface ContractStepProps {
       services: string[]
     }
   }
-  updateFormData: (key: string, value: any) => void
+  updateFormData: (key: string, value: FormValueConsultingAgreement) => void
   onEnterPress: () => void
 }
 
@@ -55,13 +56,13 @@ export function ContractStep({ formData, updateFormData, onEnterPress }: Contrac
           onChange={(e) => updateFormData("contract.name", e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <Input
+        {/* <Input
           type="date"
           placeholder="Date"
           value={formData.contract.date}
           onChange={(e) => updateFormData("contract.date", e.target.value)}
           onKeyDown={handleKeyDown}
-        />
+        /> */}
         <Input
           type="date"
           placeholder="Start Date"
