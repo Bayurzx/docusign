@@ -63,7 +63,7 @@ Manually drafting and signing contracts is time-consuming, error-prone, and inef
 ### Frontend Setup
 1. Clone the frontend repository:
    ```sh
-   git clone https://github.com/your-repo/docaprise-frontend.git
+   git clone https://github.com/Bayurzx/docusign
    cd docaprise-frontend
    ```
 2. Add the following to your `.env.local` file:
@@ -82,7 +82,7 @@ Manually drafting and signing contracts is time-consuming, error-prone, and inef
 ### Backend Setup
 1. Clone the backend repository:
    ```sh
-   git clone https://github.com/your-repo/docaprise-backend.git
+   git clone https://github.com/Bayurzx/docu-be-exposed
    cd docaprise-backend
    ```
 2. Follow the instructions at [DocuSign Quickstart](https://developers.docusign.com/docs/esign-rest-api/quickstart/) to download credentials for your own environment.
