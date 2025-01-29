@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -21,7 +21,7 @@ const eventDescriptions: Record<string, string> = {
 
 type StatusType = "loading" | "success" | "info" | "error"
 
-export default function DocuSignReturn() {
+function DocuSignReturnContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [status, setStatus] = useState<StatusType>("loading")
@@ -94,3 +94,10 @@ export default function DocuSignReturn() {
   return <div className="container mx-auto px-4 py-8">{renderContent()}</div>
 }
 
+export default function DocuSignReturn() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DocuSignReturnContent />
+    </Suspense>
+  )
+}
