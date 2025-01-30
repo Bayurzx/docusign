@@ -93,15 +93,20 @@ Manually drafting and signing contracts is time-consuming, error-prone, and inef
    ```
 5. Start the backend server:
    ```sh
-   npm run dev
+   npm start
    ```
+
+## Try it out Online on Vercel
+- Go to @ https://docusign-ten.vercel.app/ to try it out.
+- The backend server is not always online feel free to reach out to me @ my email bayurzx@gmail.com
+
 
 ## Contributing
 We welcome contributions! Feel free to fork the repository, create a branch, and submit a pull request with improvements.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Contact
-For any inquiries, reach out to our team at **contact@docaprise.com**.
+For any inquiries, reach out to our team at **bayurzx@gmail.com**.
 
