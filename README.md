@@ -110,3 +110,5 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## Contact
 For any inquiries, reach out to our team at **bayurzx@gmail.com**.
 
+## ⚠ NOTE ⚠
+The backend doesn't run 24/7 reach out to me if you wish to test online @ bayurzx@gmail.com
